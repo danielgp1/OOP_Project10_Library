@@ -19,8 +19,8 @@ public:
 	void booksAdd(const Book&);
 	void booksRemove(const size_t);
 	void usersAdd(const String&, const String&);
-	void usersRemove(const String&);
-
+	void usersRemove(String&);
+	User& activeUser();
 private:
 	UserStore users;
 	BookStore books;

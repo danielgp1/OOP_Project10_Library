@@ -15,6 +15,7 @@ public:
 	void pushBack(T);
 	void print() const;
 	void clear();
+	void popBack();
 	friend std::ostream& operator <<(std::ostream& out, const Vector<T>& vector)
 	{
 		for (size_t i = 0; i < vector.size ; ++i)
@@ -114,7 +115,7 @@ inline void Vector<T>::print() const
 		std::cout << vector[i];
 		if (i != size - 1)
 		{
-			std::cout << " | ";
+			std::cout << "|";
 		}
 	}
 	std::cout << std::endl;
@@ -128,6 +129,27 @@ inline void Vector<T>::clear()
 	this->erase();
 	this->vector = new T[capacity];
 }
+
+template<typename T>
+inline void Vector<T>::popBack()
+{
+	if (this->size >= 1)
+	{
+		T* elements = new T[capacity];
+		this->size--;
+		for (size_t i = 0; i < size; ++i)
+		{
+			elements[i] = vector[i];
+		}
+		delete[] vector;
+		vector = elements;
+	}
+	else
+	{
+		std::cout << "The vector is empty!\n";
+	}
+}
+	
 
 template<typename T>
 inline size_t Vector<T>::getSize() const

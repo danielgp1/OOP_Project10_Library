@@ -28,6 +28,11 @@ BookStore& BookStore::operator=(const BookStore& other)
 	return *this;
 }
 
+//Book& BookStore::operator[](int index)
+//{
+//	return books[index];
+//}
+
 void BookStore::allBooksBrieflyInfo() const
 {
 	for (size_t i = 0; i < size; ++i)
@@ -54,6 +59,11 @@ void BookStore::bookDetailedInfo(const size_t id) const
 		return;
 	}
 	books[indexBook].printDetailed();
+}
+
+size_t BookStore::getSize() const
+{
+	return this->size;
 }
 
 void BookStore::copy(const BookStore& other)

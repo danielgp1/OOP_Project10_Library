@@ -57,6 +57,17 @@ bool String::operator!=(const String& _string)
 	return strcmp(this->text, _string.text);
 }
 
+String String::operator+(String& other)
+{
+	String temp;
+	temp.copy(*this);
+	for (int i = 0; i < other.size; ++i)
+	{
+		temp += other[i];
+	}
+	return temp;
+}
+
 const char String::operator[](int index)
 {
 	return this->text[index];

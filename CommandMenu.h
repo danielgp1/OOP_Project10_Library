@@ -10,10 +10,13 @@ public:
 	CommandMenu();
 	void startLibrary();
 	void getCommand();
-	void checkCommand(String& command1,String& command2, Vector<String>& vector1);
+	void checkCommand(String&, String&, Vector<String>&);
+	void getParameters();
+	void checkSecondCommand(String&);
 private:
 	Vector<String> allCommands;
 	Vector<String> theCommand;
+	Vector<String> parameters;
 	String command;
 };
 

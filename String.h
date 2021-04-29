@@ -14,6 +14,7 @@ public:
 	bool operator!=(const String&);
 	friend std::ostream& operator <<(std::ostream&, const String&);
 	friend std::istream& operator >>(std::istream&, String&);
+	String operator+(String&);
 	const char operator[](int);
 	String& operator+=(const char);
 	size_t getSize() const;

@@ -26,7 +26,6 @@ CommandMenu::CommandMenu()
 void CommandMenu::startLibrary()
 {
 	Library library;
-	User admin;
 	int commandIndex = -1;
 	do
 	{
@@ -35,11 +34,12 @@ void CommandMenu::startLibrary()
 		std::cout << "Enter a command. Enter \"help\" to see the available commands.\n";
 		std::cin >> command;
 		this->getCommand();
+		this->checkSecondCommand(theCommand[2]);
+		this->getParameters();
 		for (size_t i = 0; i < allCommands.getSize(); ++i)
 		{
 			if (theCommand[0] == allCommands[i])
 			{
-				//std::cout << theCommand[0] << " " << i << std::endl;
 				commandIndex = i;
 				break;
 			}
@@ -66,21 +66,42 @@ void CommandMenu::startLibrary()
 		}
 		case 4:
 		{
+			if (parameters.getSize() >= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
 			library.help();
-			break;
+			break;	
 		}
 		case 5:
 		{
+			if (parameters.getSize() >= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
 			library.logIn();
 			break;
 		}
 		case 6:
 		{
+			if (parameters.getSize() >= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
 			library.logOut();
 			break;
 		}
 		case 7:
 		{
+			if (parameters.getSize() >= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.booksAll();
 			break;
 		}
 		case 8:
@@ -105,10 +126,22 @@ void CommandMenu::startLibrary()
 		}
 		case 13:
 		{
+			if (parameters.getSize() >= 3 || parameters.getSize() <= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.usersAdd(parameters[0], parameters[1]);
 			break;
 		}
 		case 14:
 		{
+			if (parameters.getSize() >= 2 || parameters.getSize() <= 0)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.usersRemove(parameters[0]);
 			break;
 		}
 		case 15:
@@ -142,15 +175,18 @@ void CommandMenu::getCommand()
 		}
 		ourCommand += command[i];
 	}
-	theCommand.pushBack(ourCommand);
+	theCommand.pushBack(ourCommand); // added it again due to the change of theCommand[0] later(2-word commands)
 	for (size_t j = helperIndex; j < command.getSize(); ++j)
 	{
 		if (command[j] == ' ')
 		{
+			theCommand.pushBack(helperCommand);
 			break;
 		}
 		helperCommand += command[j];
 	}
+	if (theCommand[2] != helperCommand)
+		theCommand.pushBack(helperCommand);
 	checkCommand(ourCommand, helperCommand, theCommand);
 }
 
@@ -184,3 +220,39 @@ void CommandMenu::checkCommand(String& command1,String& command2,Vector<String>&
 			vector1[0] = "books remove";
 	}
 }
+
+
+void CommandMenu::getParameters()
+{
+	parameters.clear();
+	String space = " ";
+	String parameter = "";
+	for (size_t i = 0; i < command.getSize(); ++i)
+	{
+		if (command[i] == ' ' && command[i - 1] == ' ')
+		{
+			continue;
+		}
+		if (command[i] == ' ')
+		{
+			if (parameter == theCommand[0] || parameter == theCommand[1] || parameter == theCommand[2]) // (2-word commands)
+			{
+				parameter = "";
+				continue;
+			}
+			parameters.pushBack(parameter);
+			parameter = "";
+			continue;
+		}
+		parameter += command[i];
+	}
+	if(parameter != "" && parameter != theCommand[0] && parameter != theCommand[1] && parameter != theCommand[2])
+		parameters.pushBack(parameter);
+}
+
+void CommandMenu::checkSecondCommand(String& command)
+{
+	if (command != "info" && command != "find" && command != "sort" && command != "add" && command != "remove" && command != "all" && command != "as")
+		this->theCommand.popBack();
+}
+

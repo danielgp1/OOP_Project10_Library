@@ -95,7 +95,63 @@ void Library::help() const
 	std::cout << "(*) - requires to be logged in | (^) - requires admin rights\n";
 }
 
+void Library::booksAll() const
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	if (books.getSize() == 0)
+	{
+		std::cout << "No available books!\n";
+		return;
+	}
+	books.allBooksBrieflyInfo();
+}
+
 void Library::usersAdd(const String& name, const String& password)
 {
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	User active;
+	active = activeUser();
+	if (active.getAdmin() == false)
+	{
+		std::cout << "Admin rights required!\n";
+		return;
+	}
 	users.addUser(name, password);
+	std::cout << "New user successfully added!\n";
+}
+
+void Library::usersRemove(String& name)
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	User active;
+	active = activeUser();
+	if (active.getAdmin() == false)
+	{
+		std::cout << "Admin rights required!\n";
+		return;
+	}
+	if (name == active.getName())
+	{
+		std::cout << "You can't remove yourself!\n";
+		return;
+	}
+	users.removeUser(name);
+	std::cout << "User successfully removed!\n";
+}
+
+User& Library::activeUser()
+{
+	return users[users.activeUserIndex()];
 }
