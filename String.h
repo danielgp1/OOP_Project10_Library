@@ -1,6 +1,7 @@
 #pragma once
 #include <cstring>
 #include <iostream>
+#include <cmath>
 class String
 {
 public:
@@ -20,6 +21,7 @@ public:
 	size_t getSize() const;
 	void print() const;
 	void removeLast();
+	int StringToNumber();
 private:
 	size_t capacity;
 	size_t size;

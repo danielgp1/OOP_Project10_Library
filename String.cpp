@@ -113,6 +113,29 @@ void String::removeLast()
 	}
 }
 
+int String::StringToNumber()
+{
+	int numbersCount = 0;
+	for (size_t i = 0; i < this->size; ++i)
+	{
+		if (this->text[i] >= '0' && this->text[i] <= '9')
+		{
+			numbersCount++;
+		}
+	}
+	int position = pow(10,numbersCount - 1);
+	int number = 0;
+	for (size_t i = 0; i < this->size; ++i)
+	{
+		if (this->text[i] >= '0' && this->text[i] <= '9')
+		{
+			number += (text[i]-48)*position ;
+			position /= 10;
+		}
+	}
+	return number;
+}
+
 
 void String::copy(const String& _string)
 {
