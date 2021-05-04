@@ -52,6 +52,18 @@ bool String::operator==(const String& _string)
 	return !strcmp(this->text, _string.text);
 }
 
+bool String::operator==(const char* text)
+{
+	for (size_t i = 0; i < size; ++i)
+	{
+		if (text[i] != this->text[i])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 bool String::operator!=(const String& _string)
 {
 	return strcmp(this->text, _string.text);

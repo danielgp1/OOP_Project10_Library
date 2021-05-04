@@ -28,11 +28,6 @@ BookStore& BookStore::operator=(const BookStore& other)
 	return *this;
 }
 
-//Book& BookStore::operator[](int index)
-//{
-//	return books[index];
-//}
-
 void BookStore::allBooksBrieflyInfo() const
 {
 	for (size_t i = 0; i < size; ++i)
@@ -60,6 +55,68 @@ void BookStore::bookDetailedInfo(const size_t id) const
 	}
 	books[indexBook].printDetailed();
 }
+
+void BookStore::findBook(String& option, const String& description) const
+{
+	bool atLeastOne = false;
+	if (option == "title")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			if (books[i].getTitle() == description)
+			{
+				atLeastOne = true;
+				std::cout << "Book ID: " << books[i].getID() << std::endl;
+			}
+		}
+		if (atLeastOne == false)
+		{
+			std::cout << "Book not found!\n";
+			return;
+		}
+	}
+	else if (option == "author")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			if (books[i].getAuthor() == description)
+			{
+				atLeastOne = true;
+				std::cout << "Book ID: " << books[i].getID() << std::endl;
+			}
+		}
+		if (atLeastOne == false)
+		{
+			std::cout << "Book not found!\n";
+			return;
+		}
+	}
+	else if (option == "tag")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = 0; j < books[i].getTags().getSize(); ++j)
+			{
+				if (books[i].getTags()[j] == description)
+				{
+					atLeastOne = true;
+					std::cout << "Book ID: " << books[i].getID() << std::endl;
+					break;
+				}
+			}
+		}
+		if (atLeastOne == false)
+		{
+			std::cout << "Book not found!\n";
+			return;
+		}
+	}
+	else
+	{
+		std::cout << "Invalid option!\n";
+	}
+}
+
 
 size_t BookStore::getSize() const
 {

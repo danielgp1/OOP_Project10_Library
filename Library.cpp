@@ -84,8 +84,8 @@ void Library::help() const
 	std::cout << "exit                                       exits the program\n";
 	std::cout << "login                                      logs in in the system\n";
 	std::cout << "logout(*)                                  logs out of the system\n";
-	std::cout << "books all(*)                               print the info of all books\n";
-	std::cout << "books find <what> <description>(*)         finds if the book exists\n";
+	std::cout << "books all(*)                               prints the info of all books\n";
+	std::cout << "books find <option> <description>(*)       prints the IDs of those books\n";
 	std::cout << "books info <id>(*)                         prints the info of a book\n";
 	std::cout << "books sort <by what (asc|desc)>(*)         sorts the books\n";
 	std::cout << "books add(*)(^)                            adds a new book\n";
@@ -108,6 +108,26 @@ void Library::booksAll() const
 		return;
 	}
 	books.allBooksBrieflyInfo();
+}
+
+void Library::booksInfo(const size_t id) const
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	books.bookDetailedInfo(id);
+}
+
+void Library::booksFind(String& option, const String& description) const
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	books.findBook(option, description);
 }
 
 void Library::usersAdd(const String& name, const String& password)

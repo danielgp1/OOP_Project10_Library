@@ -52,3 +52,18 @@ size_t Book::getID() const
 {
 	return this->id;
 }
+
+String Book::getTitle() const
+{
+	return this->title;
+}
+
+String Book::getAuthor() const
+{
+	return this->author;
+}
+
+Vector<String> Book::getTags() const
+{
+	return this->tags;
+}

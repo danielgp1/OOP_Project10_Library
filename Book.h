@@ -11,6 +11,9 @@ public:
 	void saveBook(std::ostream&) const;
 	Book& operator=(const Book&);
 	size_t getID() const;
+	String getTitle() const;
+	String getAuthor() const;
+	Vector<String> getTags() const;
 private:
 	String title;
 	String author;

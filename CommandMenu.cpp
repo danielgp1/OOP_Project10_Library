@@ -106,10 +106,22 @@ void CommandMenu::startLibrary()
 		}
 		case 8:
 		{
+			if (parameters.getSize() >= 2 || parameters.getSize() <= 0)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.booksInfo(parameters[0].StringToNumber());
 			break;
 		}
 		case 9:
 		{
+			if (parameters.getSize() >= 3 || parameters.getSize() <= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.booksFind(parameters[0], parameters[1]);
 			break;
 		}
 		case 10:
