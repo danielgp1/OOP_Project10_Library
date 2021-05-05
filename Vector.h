@@ -12,6 +12,7 @@ public:
 	Vector<T>& operator=(const Vector<T>&);
 	T& operator[](size_t);
 	void insertAt(const T&,size_t);
+	void removeAt(size_t);
 	void pushBack(T);
 	void print() const;
 	void clear();
@@ -93,6 +94,21 @@ inline void Vector<T>::insertAt(const T& element, size_t index)
 	}
 	this->size++;
 	this->vector[index] = element;
+}
+
+template<typename T>
+inline void Vector<T>::removeAt(size_t index)
+{
+	if (index >= size || index < 0)
+	{
+		std::cout << "Invalid position!\n";
+		return;
+	}
+	for (size_t i = index; i < size - 1; ++i)
+	{
+		vector[i] = vector[i + 1];
+	}
+	this->popBack();
 }
 
 template<typename T>

@@ -1,2 +1,8 @@
-﻿  Project.cpp
+﻿  Book.cpp
+  BookStore.cpp
+  CommandMenu.cpp
+  Library.cpp
+  Project.cpp
+  UserStore.cpp
+  Generating Code...
   Library.vcxproj -> D:\VisualStudio2019\ООП-Л\Course Project\Library\Debug\Library.exe
