@@ -110,7 +110,7 @@ void Library::booksAll() const
 	books.allBooksBrieflyInfo();
 }
 
-void Library::booksInfo(const size_t id) const
+void Library::booksInfo(size_t id) const
 {
 	if (users.activeUserIndex() == -1)
 	{

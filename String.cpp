@@ -47,12 +47,12 @@ String& String::operator=(const char* text)
 	return *this;
 }
 
-bool String::operator==(const String& _string)
+bool String::operator==(const String& _string) const
 {
 	return !strcmp(this->text, _string.text);
 }
 
-bool String::operator==(const char* text)
+bool String::operator==(const char* text) const
 {
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -64,7 +64,7 @@ bool String::operator==(const char* text)
 	return true;
 }
 
-bool String::operator!=(const String& _string)
+bool String::operator!=(const String& _string) const
 {
 	return strcmp(this->text, _string.text);
 }
@@ -73,14 +73,14 @@ String String::operator+(String& other)
 {
 	String temp;
 	temp.copy(*this);
-	for (int i = 0; i < other.size; ++i)
+	for (size_t i = 0; i < other.size; ++i)
 	{
 		temp += other[i];
 	}
 	return temp;
 }
 
-const char String::operator[](int index)
+const char String::operator[](int index) const
 {
 	return this->text[index];
 }

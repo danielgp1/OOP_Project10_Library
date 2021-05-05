@@ -96,7 +96,7 @@ Vector<String> UserStore::registeredUsers() const
 	return registeredUsers;
 }
 
-User& UserStore::operator[](const size_t index)
+User& UserStore::operator[](const size_t index) const
 {
 	return this->users[index];
 }

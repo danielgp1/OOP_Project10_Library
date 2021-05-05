@@ -14,7 +14,7 @@ public:
 	void print() const;
 	size_t getSize() const;
 	Vector<String> registeredUsers() const;
-	User& operator[](const size_t);
+	User& operator[](const size_t) const;
 	int activeUserIndex() const;
 private:
 	User* users;

@@ -1,8 +1,3 @@
-﻿  Book.cpp
-  BookStore.cpp
-  CommandMenu.cpp
-  Library.cpp
-  Project.cpp
-  UserStore.cpp
-  Generating Code...
+﻿  String.cpp
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\String.cpp(138,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Library.vcxproj -> D:\VisualStudio2019\ООП-Л\Course Project\Library\Debug\Library.exe

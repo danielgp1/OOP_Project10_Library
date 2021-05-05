@@ -10,7 +10,7 @@ public:
 	~Vector();
 	Vector(const Vector<T>&);
 	Vector<T>& operator=(const Vector<T>&);
-	T& operator[](size_t);
+	T& operator[](size_t) const;
 	void insertAt(const T&,size_t);
 	void removeAt(size_t);
 	void pushBack(T);
@@ -76,7 +76,7 @@ inline Vector<T>& Vector<T>::operator=(const Vector<T>& otherVector)
 }
 
 template<typename T>
-inline T& Vector<T>::operator[](size_t index)
+inline T& Vector<T>::operator[](size_t index) const
 {
 	return this->vector[index];
 }

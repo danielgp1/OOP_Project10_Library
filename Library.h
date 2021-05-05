@@ -13,7 +13,7 @@ public:
 	void logOut();
 	void help() const;
 	void booksAll()const;
-	void booksInfo(const size_t) const;
+	void booksInfo(size_t) const;
 	void booksFind(String&,const String&) const;
 	void booksSort(const String&);
 	void booksAdd(const Book&);
