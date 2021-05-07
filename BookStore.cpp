@@ -1,35 +1,15 @@
 #include "BookStore.h"
 #include "Book.h"
 #include <iostream>
+
 BookStore::BookStore()
 {
-	this->size = 0;
-	this->capacity = 8;
-	this->books = new Book[capacity];
-}
-
-BookStore::~BookStore()
-{
-	this->erase();
-}
-
-BookStore::BookStore(const BookStore& other)
-{
-	this->copy(other);
-}
-
-BookStore& BookStore::operator=(const BookStore& other)
-{
-	if (this != &other)
-	{
-		this->erase();
-		this->copy(other);
-	}
-	return *this;
+	this->id = 1;
 }
 
 void BookStore::allBooksBrieflyInfo() const
 {
+	size_t size = books.getSize();
 	for (size_t i = 0; i < size; ++i)
 	{
 		books[i].printBriefly();
@@ -39,6 +19,7 @@ void BookStore::allBooksBrieflyInfo() const
 
 void BookStore::bookDetailedInfo(const size_t id) const
 {
+	size_t size = books.getSize();
 	int indexBook = -1;
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -56,8 +37,9 @@ void BookStore::bookDetailedInfo(const size_t id) const
 	books[indexBook].printDetailed();
 }
 
-void BookStore::findBook(String& option, const String& description) const
+void BookStore::findBook(const String& option, const String& description) const
 {
+	size_t size = books.getSize();
 	bool atLeastOne = false;
 	if (option == "title")
 	{
@@ -117,35 +99,99 @@ void BookStore::findBook(String& option, const String& description) const
 	}
 }
 
+void BookStore::addBook()
+{
+	String title;
+	std::cout << "Title: ";
+	std::cin >> title;
+	size_t size = books.getSize();
+	for (size_t i = 0; i < size; ++i)
+	{
+		if (books[i].getTitle() == title)
+		{
+			std::cout << "This book already exists!\n";
+			return;
+		}
+	}
+	String author;
+	std::cout << "Author: ";
+	std::cin >> author;
+
+	String genre;
+	std::cout << "Genre: ";
+	std::cin >> genre;
+
+	String summary;
+	std::cout << "Summary: ";
+	std::cin >> summary;
+
+	String helper;
+	size_t helperSize;
+	std::cout << "Tags: ";
+	std::cin >> helper;
+	helperSize = helper.getSize();
+
+	size_t year;
+	std::cout << "Year: ";
+	std::cin >> year;
+
+	Vector<String> tags;
+	String ourTag = "";
+	for (size_t i = 0; i < helperSize; ++i)
+	{
+		if (helper[i] == ' ')
+		{
+			tags.pushBack(ourTag);
+			ourTag = "";
+			continue;
+		}
+		ourTag += helper[i];
+	}
+	if(ourTag!= "")
+		tags.pushBack(ourTag);
+
+	double rating;
+	std::cout << "Rating: ";
+	std::cin >> rating;
+
+	Book newBook;
+	newBook.setTitle(title);
+	newBook.setAuthor(author);
+	newBook.setGenre(genre);
+	newBook.setSummary(summary);
+	newBook.setYear(year);
+	newBook.setTags(tags);
+	newBook.setRating(rating);
+	newBook.setId(id++);
+	books.pushBack(newBook);
+	std::cout << "New book successfully added!\n";
+	std::cin.ignore();
+}
+
+void BookStore::removeBook(const String& title)
+{
+	size_t size = books.getSize();
+	int indexOfBook = -1;
+	for (size_t i = 0; i < size; ++i)
+	{
+		if (books[i].getTitle() == title)
+		{
+			indexOfBook = i;
+			break;
+		}
+	}
+	if (indexOfBook == -1)
+	{
+		std::cout << "Book not found!\n";
+		return;
+	}
+	books.removeAt(indexOfBook);
+	std::cout << "Book successfully removed!\n";
+}
+
 
 size_t BookStore::getSize() const
 {
-	return this->size;
+	return this->books.getSize();
 }
 
-void BookStore::copy(const BookStore& other)
-{
-	this->capacity = other.capacity;
-	this->size = other.size;
-	for (size_t i = 0; i < size; ++i)
-	{
-		this->books[i] = other.books[i];
-	}
-}
-
-void BookStore::erase()
-{
-	delete[] this->books;
-}
-
-void BookStore::resize()
-{
-	this->capacity *= 2;
-	Book* temp = new Book[capacity];
-	for (size_t i = 0; i < size; ++i)
-	{
-		temp[i] = this->books[i];
-	}
-	delete[] this->books;
-	this->books = temp;
-}

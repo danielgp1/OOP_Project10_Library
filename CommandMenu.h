@@ -10,9 +10,9 @@ public:
 	CommandMenu();
 	void startLibrary();
 	void getCommand();
+	void checkSecondCommand(String&);
 	void checkCommand(String&, String&, Vector<String>&);
 	void getParameters();
-	void checkSecondCommand(String&);
 private:
 	Vector<String> allCommands;
 	Vector<String> theCommand;

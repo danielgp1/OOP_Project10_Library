@@ -5,10 +5,6 @@
 class UserStore
 {
 public:
-	UserStore();
-	~UserStore();
-	UserStore(const UserStore&);
-	UserStore& operator=(const UserStore&);
 	void addUser(const String&,const String&);
 	void removeUser(const String&);
 	void print() const;
@@ -17,11 +13,6 @@ public:
 	User& operator[](const size_t) const;
 	int activeUserIndex() const;
 private:
-	User* users;
-	size_t size;
-	size_t capacity;
-	void copy(const UserStore&);
-	void erase();
-	void resize();
+	Vector<User> users;
 };
 

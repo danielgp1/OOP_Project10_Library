@@ -16,8 +16,8 @@ public:
 	void booksInfo(size_t) const;
 	void booksFind(String&,const String&) const;
 	void booksSort(const String&);
-	void booksAdd(const Book&);
-	void booksRemove(const size_t);
+	void booksAdd();
+	void booksRemove(const String&);
 	void usersAdd(const String&, const String&);
 	void usersRemove(String&);
 	User& activeUser();

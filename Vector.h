@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 
-
 template <typename T>
 class Vector
 {
@@ -124,8 +123,6 @@ inline void Vector<T>::pushBack(T newElement)
 template<typename T>
 inline void Vector<T>::print() const
 {
-	std::cout << this->size << std::endl;
-	std::cout << this->capacity << std::endl;
 	for (size_t i = 0; i < size; ++i)
 	{
 		std::cout << vector[i];
@@ -134,7 +131,6 @@ inline void Vector<T>::print() const
 			std::cout << "|";
 		}
 	}
-	std::cout << std::endl;
 }
 
 template<typename T>

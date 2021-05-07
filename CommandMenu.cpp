@@ -130,10 +130,22 @@ void CommandMenu::startLibrary()
 		}
 		case 11:
 		{
+			if (parameters.getSize() >= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.booksAdd();
 			break;
 		}
 		case 12:
 		{
+			if (parameters.getSize() >= 2 || parameters.getSize() <= 0)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.booksRemove(parameters[0]);
 			break;
 		}
 		case 13:
@@ -173,11 +185,12 @@ void CommandMenu::startLibrary()
 
 void CommandMenu::getCommand()
 {
+	size_t size = command.getSize();
 	theCommand.clear();
 	String ourCommand = "";
 	String helperCommand = "";
 	int helperIndex = 0;
-	for (size_t i = 0; i < command.getSize(); ++i)
+	for (size_t i = 0; i < size; ++i)
 	{
 		if (command[i] == ' ')
 		{
@@ -187,8 +200,8 @@ void CommandMenu::getCommand()
 		}
 		ourCommand += command[i];
 	}
-	theCommand.pushBack(ourCommand); // added it again due to the change of theCommand[0] later(2-word commands)
-	for (size_t j = helperIndex; j < command.getSize(); ++j)
+	theCommand.pushBack(ourCommand);
+	for (size_t j = helperIndex; j < size; ++j)
 	{
 		if (command[j] == ' ')
 		{
@@ -236,10 +249,12 @@ void CommandMenu::checkCommand(String& command1,String& command2,Vector<String>&
 
 void CommandMenu::getParameters()
 {
+	size_t size;
+	size = command.getSize();
 	parameters.clear();
 	String space = " ";
 	String parameter = "";
-	for (size_t i = 0; i < command.getSize(); ++i)
+	for (size_t i = 0; i < size; ++i)
 	{
 		if (command[i] == ' ' && command[i - 1] == ' ')
 		{
@@ -247,7 +262,7 @@ void CommandMenu::getParameters()
 		}
 		if (command[i] == ' ')
 		{
-			if (parameter == theCommand[0] || parameter == theCommand[1] || parameter == theCommand[2]) // (2-word commands)
+			if (parameter == theCommand[0] || parameter == theCommand[1] || parameter == theCommand[2])
 			{
 				parameter = "";
 				continue;

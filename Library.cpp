@@ -9,6 +9,7 @@ Library::Library()
 
 void Library::logIn()
 {
+	size_t size = users.getSize();
 	if (users.activeUserIndex() != -1)
 	{
 		std::cout << "Another user is already logged in! Please log out!\n";
@@ -22,7 +23,7 @@ void Library::logIn()
 	{
 		std::cout << "Enter your username: ";
 		std::cin >> name;
-		for (size_t i = 0; i < users.getSize(); ++i)
+		for (size_t i = 0; i < size; ++i)
 		{
 			if (name == users[i].getName())
 			{
@@ -130,6 +131,40 @@ void Library::booksFind(String& option, const String& description) const
 	books.findBook(option, description);
 }
 
+void Library::booksAdd()
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	User active;
+	active = activeUser();
+	if (active.getAdmin() == false)
+	{
+		std::cout << "Admin rights required!\n";
+		return;
+	}
+	books.addBook();
+}
+
+void Library::booksRemove(const String& title )
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	User active;
+	active = activeUser();
+	if (active.getAdmin() == false)
+	{
+		std::cout << "Admin rights required!\n";
+		return;
+	}
+	books.removeBook(title);
+}
+
 void Library::usersAdd(const String& name, const String& password)
 {
 	if (users.activeUserIndex() == -1)
@@ -168,7 +203,6 @@ void Library::usersRemove(String& name)
 		return;
 	}
 	users.removeUser(name);
-	std::cout << "User successfully removed!\n";
 }
 
 User& Library::activeUser()

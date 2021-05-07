@@ -1,34 +1,8 @@
 #include "UserStore.h"
 
-UserStore::UserStore()
-{
-	this->size = 0;
-	this->capacity = 8;
-	this->users = new User[capacity];
-}
-
-UserStore::~UserStore()
-{
-	this->erase();
-}
-
-UserStore::UserStore(const UserStore& otherStore)
-{
-	this->copy(otherStore);
-}
-
-UserStore& UserStore::operator=(const UserStore& otherStore)
-{
-	if (this != &otherStore)
-	{
-		this->erase();
-		this->copy(otherStore);
-	}
-	return *this;
-}
-
 void UserStore::addUser(const String& username,const String& password)
 {
+	size_t size = users.getSize();
 	for (size_t i = 0; i < size; ++i)
 	{
 		if (users[i].getName() == username)
@@ -37,20 +11,17 @@ void UserStore::addUser(const String& username,const String& password)
 			return;
 		}
 	}	
-	if (this->size >= this->capacity)
-	{
-		this->resize();
-	}
 	User newUser;
 	newUser.setName(username);
 	newUser.setPassword(password);
 	newUser.setLoggedIn(false);
 	newUser.setAdmin(false);
-	this->users[size++] = newUser;
+	users.pushBack(newUser);
 }
 
 void UserStore::removeUser(const String& username)
 {
+	size_t size = users.getSize();
 	int indexOfUser = -1;
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -65,15 +36,13 @@ void UserStore::removeUser(const String& username)
 		std::cout << "User not found!\n";
 		return;
 	}
-	for (size_t i = indexOfUser; i < size - 1; ++i)
-	{
-		users[i] = users[i + 1];
-	}
-	size--;
+	users.removeAt(indexOfUser);
+	std::cout << "User successfully removed!\n";
 }
 
 void UserStore::print() const
 {
+	size_t size = users.getSize();
 	std::cout << "Registered users:\n";
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -83,11 +52,12 @@ void UserStore::print() const
 
 size_t UserStore::getSize() const
 {
-	return this->size;
+	return this->users.getSize();
 }
 
 Vector<String> UserStore::registeredUsers() const
 {
+	size_t size = users.getSize();
 	Vector<String> registeredUsers;
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -103,6 +73,7 @@ User& UserStore::operator[](const size_t index) const
 
 int UserStore::activeUserIndex() const
 {
+	size_t size = users.getSize();
 	int index = -1;
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -115,30 +86,3 @@ int UserStore::activeUserIndex() const
 	return index;
 }
 
-void UserStore::copy(const UserStore& otherStore)
-{
-	this->size = otherStore.size;
-	this->capacity = otherStore.capacity;
-	this->users = new User[capacity];
-	for (size_t i = 0; i < size; ++i)
-	{
-		this->users[i] = otherStore.users[i];
-	}
-}
-
-void UserStore::erase()
-{
-	delete[] this->users;
-}
-
-void UserStore::resize()
-{
-	this->capacity *= 2;
-	User* temp = new User[capacity];
-	for (size_t i = 0; i < size; ++i)
-	{
-		temp[i] = this->users[i];
-	}
-	delete[] this->users;
-	this->users = temp;
-}
