@@ -12,6 +12,5 @@ int main()
     
     CommandMenu menu;
     menu.startLibrary();
-
     return 0;
 }

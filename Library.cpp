@@ -131,6 +131,26 @@ void Library::booksFind(String& option, const String& description) const
 	books.findBook(option, description);
 }
 
+void Library::booksSortAscending(const String& option)
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	books.sortBooksAscending(option);
+}
+
+void Library::booksSortDescending(const String& option)
+{
+	if (users.activeUserIndex() == -1)
+	{
+		std::cout << "You have to be logged in!\n";
+		return;
+	}
+	books.sortBooksDescending(option);
+}
+
 void Library::booksAdd()
 {
 	if (users.activeUserIndex() == -1)

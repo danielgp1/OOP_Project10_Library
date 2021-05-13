@@ -126,6 +126,21 @@ void CommandMenu::startLibrary()
 		}
 		case 10:
 		{
+			if (parameters.getSize() >= 3 || parameters.getSize() <= 0)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			if (parameters[1] == "" || parameters[1] == "asc")
+			{
+				library.booksSortAscending(parameters[0]);
+			}
+			else if (parameters[1] == "desc")
+			{
+				library.booksSortDescending(parameters[0]);
+			}
+			else
+				std::cout << "Invalid second parameter!\n";
 			break;
 		}
 		case 11:
@@ -252,7 +267,6 @@ void CommandMenu::getParameters()
 	size_t size;
 	size = command.getSize();
 	parameters.clear();
-	String space = " ";
 	String parameter = "";
 	for (size_t i = 0; i < size; ++i)
 	{

@@ -15,7 +15,8 @@ public:
 	void booksAll()const;
 	void booksInfo(size_t) const;
 	void booksFind(String&,const String&) const;
-	void booksSort(const String&);
+	void booksSortAscending(const String&);
+	void booksSortDescending(const String&);
 	void booksAdd();
 	void booksRemove(const String&);
 	void usersAdd(const String&, const String&);

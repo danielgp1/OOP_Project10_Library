@@ -8,7 +8,8 @@ public:
 	void allBooksBrieflyInfo() const;
 	void bookDetailedInfo(const size_t) const;
 	void findBook(const String&,const String&) const;
-	void sortBooks(const String&);
+	void sortBooksAscending(const String&);
+	void sortBooksDescending(const String&);
 	void addBook();
 	void removeBook(const String&);
 	size_t getSize() const;

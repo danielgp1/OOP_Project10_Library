@@ -99,6 +99,176 @@ void BookStore::findBook(const String& option, const String& description) const
 	}
 }
 
+void BookStore::sortBooksAscending(const String& option)
+{
+	size_t size = books.getSize();
+	if (size == 0)
+	{
+		std::cout << "There are no books!\n";
+		return;
+	}
+	if (size == 1)
+	{
+		std::cout << "There is only one book!\n";
+		return;
+	}
+	if (option == "title")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if ( !(books[i].getTitle() < books[j].getTitle()))
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else if (option == "author")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if (!(books[i].getAuthor() < books[j].getAuthor()))
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else if (option == "year")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if ( !(books[i].getYear() < books[j].getYear()))
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else if (option == "rating")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if (!(books[i].getRating() < books[j].getRating()))
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else
+	{
+		std::cout << "Invalid option!\n";
+		return;
+	}
+	std::cout << "Books sorted by " << option << " successfully!\n";
+}
+
+void BookStore::sortBooksDescending(const String& option)
+{
+	size_t size = books.getSize();
+	if (size == 0)
+	{
+		std::cout << "There are no books!\n";
+		return;
+	}
+	if (size == 1)
+	{
+		std::cout << "There is only one book!\n";
+		return;
+	}
+	if (option == "title")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if (books[i].getTitle() < books[j].getTitle())
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else if (option == "author")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if (books[i].getAuthor() < books[j].getAuthor())
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else if (option == "year")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if (books[i].getYear() < books[j].getYear())
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else if (option == "rating")
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			for (size_t j = i + 1; j < size; j++)
+			{
+				if (books[i].getRating() < books[j].getRating())
+				{
+					Book temp;
+					temp = books[i];
+					books[i] = books[j];
+					books[j] = temp;
+				}
+			}
+		}
+	}
+	else
+	{
+		std::cout << "Invalid option!\n";
+		return;
+	}
+	std::cout << "Books sorted by " << option << " successfully!\n";	
+}
+
 void BookStore::addBook()
 {
 	String title;
@@ -133,8 +303,13 @@ void BookStore::addBook()
 
 	size_t year;
 	std::cout << "Year: ";
-	std::cin >> year;
-
+	while (!(std::cin >> year))
+	{
+		std::cin.clear(); // clear input buffer to restore cin to a usable state
+		std::cin.ignore(INT_MAX, '\n'); // discard the row
+		std::cout << "You can only enter numbers for an year!\n";
+		std::cout << "Year: ";
+	} 
 	Vector<String> tags;
 	String ourTag = "";
 	for (size_t i = 0; i < helperSize; ++i)
@@ -152,7 +327,13 @@ void BookStore::addBook()
 
 	double rating;
 	std::cout << "Rating: ";
-	std::cin >> rating;
+	while (!(std::cin >> rating))
+	{
+		std::cin.clear(); // clear input buffer to restore cin to a usable state
+		std::cin.ignore(INT_MAX, '\n'); // discard the row
+		std::cout << "You can only enter numbers for a rating!\n";
+		std::cout << "Rating: ";
+	}
 
 	Book newBook;
 	newBook.setTitle(title);

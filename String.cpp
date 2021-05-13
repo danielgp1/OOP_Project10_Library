@@ -69,6 +69,35 @@ bool String::operator!=(const String& _string) const
 	return strcmp(this->text, _string.text);
 }
 
+bool String::operator<(const String otherString) const
+{
+	bool changed = false;
+	for (size_t i = 0; i < this->size; ++i)
+	{
+		if (this->text[i] >= 65 && this->text[i] <= 90)
+		{
+			changed = true;
+			this->text[i] += 32;
+		}
+		if (otherString.text[i] >= 65 && otherString.text[i] <= 90)
+			otherString.text[i] += 32;
+		if (this->text[i] < otherString.text[i])
+		{
+			if(changed){ this->text[i] -= 32; }
+			return true;
+		}
+		if (this->text[i] > otherString.text[i])
+		{
+			if (changed) { this->text[i] -= 32; }
+			return false;
+		}
+		if (changed) { this->text[i] -= 32; }
+	}
+	if(this->size == otherString.size)
+		return false;
+	return true;
+}
+
 String String::operator+(String& other)
 {
 	String temp;

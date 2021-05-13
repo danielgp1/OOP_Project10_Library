@@ -21,7 +21,9 @@ public:
 	const String& getTitle() const; 
 	const String& getAuthor() const; 
 	const Vector<String>& getTags() const;
-	void EnterTags();
+	const size_t& getYear() const;
+	const double& getRating() const;
+	//void EnterTags();
 private:
 	String title;
 	String author;

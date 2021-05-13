@@ -14,6 +14,7 @@ public:
 	bool operator==(const String&) const;
 	bool operator==(const char*) const;
 	bool operator!=(const String&) const;
+	bool operator<(const String) const;
 	friend std::ostream& operator <<(std::ostream&, const String&);
 	friend std::istream& operator >>(std::istream&, String&);
 	String operator+(String&);

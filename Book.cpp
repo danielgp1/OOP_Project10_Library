@@ -92,7 +92,17 @@ const Vector<String>& Book::getTags() const
 	return this->tags;
 }
 
-void Book::EnterTags()
+const size_t& Book::getYear() const
 {
-	char symbol = ' ';
+	return this->year;
 }
+
+const double& Book::getRating() const
+{
+	return this->rating;
+}
+
+//void Book::EnterTags()
+//{
+//	char symbol = ' ';
+//}
