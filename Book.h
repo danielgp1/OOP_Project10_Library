@@ -23,7 +23,6 @@ public:
 	const Vector<String>& getTags() const;
 	const size_t& getYear() const;
 	const double& getRating() const;
-	//void EnterTags();
 private:
 	String title;
 	String author;

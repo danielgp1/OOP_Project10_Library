@@ -5,12 +5,13 @@ class Library
 {
 public:
 	Library();
-	void open(const char*);
-	void save(const char*);
+	void open(String& filename);
+	void save();
 	void saveAs(const char*);
 	void close();
 	void logIn();
 	void logOut();
+	void exit();
 	void help() const;
 	void booksAll()const;
 	void booksInfo(size_t) const;
@@ -25,5 +26,9 @@ public:
 private:
 	UserStore users;
 	BookStore books;
+	bool isOpened;
+	bool isSaved;
+	bool isChanged;
+	String fileName;
 };
 

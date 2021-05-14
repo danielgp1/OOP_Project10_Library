@@ -101,8 +101,3 @@ const double& Book::getRating() const
 {
 	return this->rating;
 }
-
-//void Book::EnterTags()
-//{
-//	char symbol = ' ';
-//}

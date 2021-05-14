@@ -2,6 +2,7 @@
 #include <cstring>
 #include <iostream>
 #include <cmath>
+#include <fstream>
 class String
 {
 public:
@@ -16,11 +17,12 @@ public:
 	bool operator!=(const String&) const;
 	bool operator<(const String) const;
 	friend std::ostream& operator <<(std::ostream&, const String&);
-	friend std::istream& operator >>(std::istream&, String&);
+	friend std::istream& operator >>(std::istream&,String&);
 	String operator+(String&);
 	const char operator[](int) const;
 	String& operator+=(const char);
 	size_t getSize() const;
+	const char* getText() const;
 	void print() const;
 	void removeLast();
 	int StringToNumber();

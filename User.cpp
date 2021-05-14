@@ -2,8 +2,16 @@
 
 User::User()
 {
-	this->name = "admin";
-	this->password = "i<3c++";
+	this->name = "";
+	this->password = "";
+	this->isAdmin = 0;
+	this->isLoggedIn = 0;
+}
+
+User::User(String& _name, String& _pass)
+{
+	this->name = _name;
+	this->password = _pass;
 	this->isAdmin = 1;
 	this->isLoggedIn = 1;
 }
@@ -46,6 +54,24 @@ void User::setLoggedIn(const bool _status)
 void User::setAdmin(const bool _level)
 {
 	this->isAdmin = _level;
+}
+
+void User::loadUser(std::ifstream& in)
+{
+	in >> name;
+	if (name == "\n")
+		in >> name;
+	in >> password;
+	in >> isAdmin;
+	in >> isLoggedIn;
+}
+
+void User::saveUser(std::ostream& out) const
+{
+	out << name << "\n";
+	out << password << "\n";
+	out << isAdmin << "\n";
+	out << isLoggedIn << "\n";
 }
 
 bool User::operator==(const User& user)

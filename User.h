@@ -4,6 +4,7 @@ class User
 {
 public:
 	User();
+	User(String&, String&);
 	String getName() const;
 	void setName(const String&);
 	String getPassword() const;
@@ -12,7 +13,7 @@ public:
 	bool getLoggedIn() const;
 	void setLoggedIn(const bool);
 	void setAdmin(const bool);
-	void loadUser(std::istream&);
+	void loadUser(std::ifstream&);
 	void saveUser(std::ostream&) const;
 	bool operator==(const User&);
 	User& operator=(const User& other);

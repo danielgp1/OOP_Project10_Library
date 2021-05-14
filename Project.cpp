@@ -9,8 +9,10 @@ int main()
     // functional sort
     // create a method to check for rights/status
     // remove switch
+    // check for empty file when using open
     
     CommandMenu menu;
     menu.startLibrary();
+
     return 0;
 }

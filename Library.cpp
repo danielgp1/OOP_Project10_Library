@@ -2,13 +2,52 @@
 
 Library::Library()
 {
-	users.addUser("admin", "i<3c++");
-	users[0].setAdmin(true);
-	users[0].setLoggedIn(true);
+	isOpened = false;
+	isSaved = false;
+	isChanged = false;
+	fileName = "";
+}
+
+void Library::open(String& filename)
+{
+	if (isOpened)
+	{
+		std::cout << "A database is already loaded! Save or close before trying to open a new one!\n";
+		return;
+	}
+	size_t size = filename.getSize();
+	if (filename[size - 4] != '.' || filename[size - 3] != 't' || filename[size - 2] != 'x' || filename[size - 1] != 't')
+	{
+		std::cout << "File name must end with .txt !\n";
+		return;
+	}
+	users.loadUsers(filename.getText());
+	this->fileName = filename;
+	this->isOpened = true;
+}
+
+void Library::save()
+{
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
+	if (!isChanged)
+	{
+		std::cout << "No changes have been made!\n";
+		return;
+	}
+	users.saveUsers(this->fileName);
 }
 
 void Library::logIn()
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	size_t size = users.getSize();
 	if (users.activeUserIndex() != -1)
 	{
@@ -64,6 +103,11 @@ void Library::logIn()
 
 void Library::logOut()
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "No one is logged in!\n";
@@ -71,6 +115,28 @@ void Library::logOut()
 	}
 	users[users.activeUserIndex()].setLoggedIn(false);
 	std::cout << "You have successfully logged out!\n";
+	return;
+}
+
+void Library::exit()
+{
+	if (isChanged)
+	{
+		std::cout << "There are unsaved changes! Are you sure you want to exit?\n0 - Save&Exit | 1 - Exit : ";
+		bool choice = 0;
+		std::cin >> choice;
+		if (choice)
+		{
+			std::cin.ignore();
+			std::cout << "Good bye!\n";
+			return;
+		}
+		std::cin.ignore();
+		this->save();
+		std::cout << "Good bye!\n";
+		return;
+	}
+	std::cout << "Good bye!\n";
 	return;
 }
 
@@ -98,6 +164,11 @@ void Library::help() const
 
 void Library::booksAll() const
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -113,6 +184,11 @@ void Library::booksAll() const
 
 void Library::booksInfo(size_t id) const
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -123,6 +199,11 @@ void Library::booksInfo(size_t id) const
 
 void Library::booksFind(String& option, const String& description) const
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -133,26 +214,43 @@ void Library::booksFind(String& option, const String& description) const
 
 void Library::booksSortAscending(const String& option)
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
 		return;
 	}
 	books.sortBooksAscending(option);
+	this->isChanged = true;
 }
 
 void Library::booksSortDescending(const String& option)
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
 		return;
 	}
 	books.sortBooksDescending(option);
+	this->isChanged = true;
 }
 
 void Library::booksAdd()
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -166,10 +264,16 @@ void Library::booksAdd()
 		return;
 	}
 	books.addBook();
+	this->isChanged = true;
 }
 
 void Library::booksRemove(const String& title )
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -183,10 +287,16 @@ void Library::booksRemove(const String& title )
 		return;
 	}
 	books.removeBook(title);
+	this->isChanged = true;
 }
 
 void Library::usersAdd(const String& name, const String& password)
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -201,10 +311,16 @@ void Library::usersAdd(const String& name, const String& password)
 	}
 	users.addUser(name, password);
 	std::cout << "New user successfully added!\n";
+	this->isChanged = true;
 }
 
 void Library::usersRemove(String& name)
 {
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
 	if (users.activeUserIndex() == -1)
 	{
 		std::cout << "You have to be logged in!\n";
@@ -223,6 +339,7 @@ void Library::usersRemove(String& name)
 		return;
 	}
 	users.removeUser(name);
+	this->isChanged = true;
 }
 
 User& Library::activeUser()

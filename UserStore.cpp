@@ -14,8 +14,16 @@ void UserStore::addUser(const String& username,const String& password)
 	User newUser;
 	newUser.setName(username);
 	newUser.setPassword(password);
-	newUser.setLoggedIn(false);
-	newUser.setAdmin(false);
+	if (username == "admin")
+	{
+		newUser.setAdmin(true);
+		newUser.setLoggedIn(true);
+	}	
+	else
+	{
+		newUser.setLoggedIn(false);
+		newUser.setAdmin(false);
+	}
 	users.pushBack(newUser);
 }
 
@@ -84,5 +92,42 @@ int UserStore::activeUserIndex() const
 		}
 	}
 	return index;
+}
+
+const size_t UserStore::getLinesOfFile(const String& filename)
+{
+	std::ifstream myfile(filename.getText());
+	myfile.unsetf(std::ios_base::skipws);
+	size_t line_count = std::count(
+		std::istream_iterator<char>(myfile),
+		std::istream_iterator<char>(),
+		'\n');
+	return line_count;
+}
+
+void UserStore::loadUsers(const String& filename)
+{
+	std::ifstream in(filename.getText());
+	size_t lines = getLinesOfFile(filename);
+	std::ifstream in2(filename.getText(), std::ios::app);
+	for (size_t i = 0; i < lines/4; ++i)
+	{
+		User user;
+		user.loadUser(in2);
+		this->addUser(user.getName(), user.getPassword());
+	}
+	std::cout << "User database successfully loaded!\n";
+}
+
+void UserStore::saveUsers(const String& filename)
+{
+	size_t size = users.getSize();
+	std::ofstream out(filename.getText());
+	for (size_t i = 0;i < size; ++i)
+	{
+		users[i].saveUser(out);
+	}
+	std::cout << "Database successfully updated!\n";
+
 }
 

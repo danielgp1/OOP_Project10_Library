@@ -131,6 +131,11 @@ size_t String::getSize() const
 	return this->size;
 }
 
+const char* String::getText() const
+{
+	return this->text;
+}
+
 void String::print() const
 {
 	std::cout << this->text << std::endl;
@@ -210,7 +215,7 @@ std::ostream& operator<<(std::ostream& out, const String& _string)
 	return out;
 }
 
-std::istream& operator>>(std::istream& in, String& _string)
+std::istream& operator>>(std::istream& in,String& _string)
 {
 	char element = ' ';
 	while (element != '\n')
