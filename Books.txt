@@ -1,0 +1,13 @@
+1
+MyFirstBook
+iAmTheAuthor
+sci-fi
+A cool book about space
+4
+space
+war
+planets
+stars
+2021
+100
+1

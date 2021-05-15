@@ -2,12 +2,11 @@
 
 Book::Book()
 {
-	this->title = "Default";
-	this->author = "Default";
-	this->genre = "Default";
-	this->summary = "Default";
+	this->title = "";
+	this->author = "";
+	this->genre = "";
+	this->summary = "";
 	this->year = 0;
-	this->tags.pushBack("Default");
 	this->rating = 0;
 	this->id = 0;
 }
@@ -66,10 +65,36 @@ void Book::printDetailed() const
 	std::cout << "Author: " << this->author << std::endl;
 	std::cout << "Genre: " << this->genre << std::endl;
 	std::cout << "Summary: " << this->summary << std::endl;
-	std::cout << "Year: " << this->year << std::endl;
 	std::cout << "Tags: "; this->tags.print(); std::cout << std::endl;
+	std::cout << "Year: " << this->year << std::endl;
 	std::cout << "Rating: " << this->rating << std::endl;
 	std::cout << "ID: " << this->id << std::endl;
+}
+
+void Book::loadBook(std::istream& in)
+{
+	in >> title;
+	if (title == "\n")
+		in >> title;
+	in >> author;
+	in >> genre;
+	in >> summary;
+	in >> tags;
+	in >> year;
+	in >> rating;
+	in >> id;
+}
+
+void Book::saveBook(std::ostream& out) const
+{
+	out << title << "\n";
+	out << author << "\n";
+	out << genre << "\n";
+	out << summary << "\n";
+	out << tags << "\n";
+	out << year << "\n";
+	out << rating << "\n";
+	out << id << "\n";
 }
 
 size_t Book::getID() const

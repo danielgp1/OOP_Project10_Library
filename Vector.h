@@ -18,17 +18,27 @@ public:
 	void popBack();
 	friend std::ostream& operator <<(std::ostream& out, const Vector<T>& vector)
 	{
+		out << vector.getSize() << "\n";
 		for (size_t i = 0; i < vector.size ; ++i)
 		{
-			out << vector.vector[i] << " ";
+			out << vector.vector[i];
+			if (i != vector.size - 1)
+			{
+				out << "\n";
+			}
 		}
 		return out;
 	}
-	friend std::istream& operator >>(std::istream& in, const Vector<T>& vector)
+	friend std::istream& operator >>(std::istream& in, Vector<T>& vector)
 	{
-		for (size_t i = 0; i < vector.size; ++i)
+		size_t number;
+		in >> number;
+		in.ignore();
+		for (size_t i = 0; i < number; ++i)
 		{
-			in >> vector.vector[i];
+			T element;
+			in >> element;
+			vector.pushBack(element);
 		}
 		return in;
 	}

@@ -5,7 +5,7 @@ class Library
 {
 public:
 	Library();
-	void open(String& filename);
+	void open();
 	void save();
 	void saveAs(const char*);
 	void close();
@@ -22,13 +22,16 @@ public:
 	void booksRemove(const String&);
 	void usersAdd(const String&, const String&);
 	void usersRemove(String&);
+	bool correctUsersDatabase(const String&);
 	User& activeUser();
 private:
 	UserStore users;
 	BookStore books;
-	bool isOpened;
+	bool usersIsOpened;
+	bool booksIsOpened;
 	bool isSaved;
 	bool isChanged;
-	String fileName;
+	String usersFileName;
+	String booksFileName;
 };
 

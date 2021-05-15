@@ -28,8 +28,8 @@ private:
 	String author;
 	String genre;
 	String summary;
-	size_t year;
 	Vector<String> tags;
+	size_t year;
 	double rating;
 	size_t id;
 };

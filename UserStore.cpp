@@ -116,7 +116,7 @@ void UserStore::loadUsers(const String& filename)
 		user.loadUser(in2);
 		this->addUser(user.getName(), user.getPassword());
 	}
-	std::cout << "User database successfully loaded!\n";
+	std::cout << "Users database successfully loaded!\n";
 }
 
 void UserStore::saveUsers(const String& filename)
@@ -127,7 +127,5 @@ void UserStore::saveUsers(const String& filename)
 	{
 		users[i].saveUser(out);
 	}
-	std::cout << "Database successfully updated!\n";
-
 }
 

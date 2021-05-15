@@ -5,6 +5,7 @@
 BookStore::BookStore()
 {
 	this->id = 1;
+	this->total = 0;
 }
 
 void BookStore::allBooksBrieflyInfo() const
@@ -301,15 +302,6 @@ void BookStore::addBook()
 	std::cin >> helper;
 	helperSize = helper.getSize();
 
-	size_t year;
-	std::cout << "Year: ";
-	while (!(std::cin >> year))
-	{
-		std::cin.clear(); // clear input buffer to restore cin to a usable state
-		std::cin.ignore(INT_MAX, '\n'); // discard the row
-		std::cout << "You can only enter numbers for an year!\n";
-		std::cout << "Year: ";
-	} 
 	Vector<String> tags;
 	String ourTag = "";
 	for (size_t i = 0; i < helperSize; ++i)
@@ -322,8 +314,19 @@ void BookStore::addBook()
 		}
 		ourTag += helper[i];
 	}
-	if(ourTag!= "")
+	if (ourTag != "")
 		tags.pushBack(ourTag);
+
+	size_t year;
+	std::cout << "Year: ";
+	while (!(std::cin >> year))
+	{
+		std::cin.clear(); // clear input buffer to restore cin to a usable state
+		std::cin.ignore(INT_MAX, '\n'); // discard the row
+		std::cout << "You can only enter numbers for an year!\n";
+		std::cout << "Year: ";
+	} 
+	
 
 	double rating;
 	std::cout << "Rating: ";
@@ -345,6 +348,7 @@ void BookStore::addBook()
 	newBook.setRating(rating);
 	newBook.setId(id++);
 	books.pushBack(newBook);
+	this->total++;
 	std::cout << "New book successfully added!\n";
 	std::cin.ignore();
 }
@@ -376,3 +380,28 @@ size_t BookStore::getSize() const
 	return this->books.getSize();
 }
 
+
+void BookStore::loadBooks(const String& filename)
+{
+	std::ifstream in(filename.getText(), std::ios::app);
+	in >> this->total;
+	for (size_t i = 0; i < total; ++i)
+	{
+		Book book;
+		book.loadBook(in);
+		books.pushBack(book);
+	}
+	this->id = books.getSize() + 1;
+	std::cout << "Books database successfully loaded!\n";
+}
+
+void BookStore::saveBooks(const String& filename)
+{
+	size_t size = books.getSize();
+	std::ofstream out(filename.getText());
+	out << this->total << "\n";
+	for (size_t i = 0; i < size; ++i)
+	{
+		books[i].saveBook(out);
+	}
+}

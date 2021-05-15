@@ -13,7 +13,10 @@ public:
 	void addBook();
 	void removeBook(const String&);
 	size_t getSize() const;
+	void loadBooks(const String&);
+	void saveBooks(const String&);
 private:
 	Vector<Book> books;
+	size_t total;
 	size_t id;
 };
