@@ -5,9 +5,9 @@ class Library
 {
 public:
 	Library();
-	void open();
+	void open(const String&);
 	void save();
-	void saveAs(const char*);
+	void saveAs(const String&);
 	void close();
 	void logIn();
 	void logOut();
@@ -22,16 +22,14 @@ public:
 	void booksRemove(const String&);
 	void usersAdd(const String&, const String&);
 	void usersRemove(String&);
-	bool correctUsersDatabase(const String&);
+
 	User& activeUser();
 private:
 	UserStore users;
 	BookStore books;
-	bool usersIsOpened;
-	bool booksIsOpened;
+	bool isOpened;
 	bool isSaved;
 	bool isChanged;
-	String usersFileName;
-	String booksFileName;
+	String FileName;
 };
 

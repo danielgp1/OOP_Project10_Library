@@ -1,5 +1,10 @@
 #include "UserStore.h"
 
+UserStore::UserStore()
+{
+	this->total = 0;
+}
+
 void UserStore::addUser(const String& username,const String& password)
 {
 	size_t size = users.getSize();
@@ -24,6 +29,7 @@ void UserStore::addUser(const String& username,const String& password)
 		newUser.setLoggedIn(false);
 		newUser.setAdmin(false);
 	}
+	this->total++;
 	users.pushBack(newUser);
 }
 
@@ -45,6 +51,7 @@ void UserStore::removeUser(const String& username)
 		return;
 	}
 	users.removeAt(indexOfUser);
+	this->total--;
 	std::cout << "User successfully removed!\n";
 }
 
@@ -105,24 +112,22 @@ const size_t UserStore::getLinesOfFile(const String& filename)
 	return line_count;
 }
 
-void UserStore::loadUsers(const String& filename)
+void UserStore::loadUsers(std::ifstream& in)
 {
-	std::ifstream in(filename.getText());
-	size_t lines = getLinesOfFile(filename);
-	std::ifstream in2(filename.getText(), std::ios::app);
-	for (size_t i = 0; i < lines/4; ++i)
+	size_t helper;
+	in >> helper;
+	for (size_t i = 0; i < helper; ++i)
 	{
 		User user;
-		user.loadUser(in2);
+		user.loadUser(in);
 		this->addUser(user.getName(), user.getPassword());
 	}
-	std::cout << "Users database successfully loaded!\n";
 }
 
-void UserStore::saveUsers(const String& filename)
+void UserStore::saveUsers(std::ofstream& out)
 {
+	out << this->total << "\n";
 	size_t size = users.getSize();
-	std::ofstream out(filename.getText());
 	for (size_t i = 0;i < size; ++i)
 	{
 		users[i].saveUser(out);

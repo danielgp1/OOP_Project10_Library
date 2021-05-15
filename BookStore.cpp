@@ -8,6 +8,15 @@ BookStore::BookStore()
 	this->total = 0;
 }
 
+void BookStore::print() const
+{
+	size_t size = books.getSize();
+	for (size_t i = 0; i < size; ++i)
+	{
+		std::cout << books[i].getAuthor() << " | ";
+	}
+}
+
 void BookStore::allBooksBrieflyInfo() const
 {
 	size_t size = books.getSize();
@@ -381,9 +390,12 @@ size_t BookStore::getSize() const
 }
 
 
-void BookStore::loadBooks(const String& filename)
+void BookStore::loadBooks(std::ifstream& in,size_t skip)
 {
-	std::ifstream in(filename.getText(), std::ios::app);
+	for (int i = 0; i < skip; ++i) 
+	{
+		in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
 	in >> this->total;
 	for (size_t i = 0; i < total; ++i)
 	{
@@ -392,13 +404,11 @@ void BookStore::loadBooks(const String& filename)
 		books.pushBack(book);
 	}
 	this->id = books.getSize() + 1;
-	std::cout << "Books database successfully loaded!\n";
 }
 
-void BookStore::saveBooks(const String& filename)
+void BookStore::saveBooks(std::ofstream& out)
 {
 	size_t size = books.getSize();
-	std::ofstream out(filename.getText());
 	out << this->total << "\n";
 	for (size_t i = 0; i < size; ++i)
 	{

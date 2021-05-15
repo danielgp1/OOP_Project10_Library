@@ -50,12 +50,12 @@ void CommandMenu::startLibrary()
 		{
 		case 0:
 		{
-			if (parameters.getSize() >= 1)
+			if (parameters.getSize() >= 2 || parameters.getSize() <= 0)
 			{
 				std::cout << "Invalid parameters count!\n";
 				break;
 			}
-			library.open();
+			library.open(parameters[0]);
 			break;
 		}
 		case 1:

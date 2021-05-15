@@ -2,59 +2,42 @@
 
 Library::Library()
 {
-	usersIsOpened = false;
-	booksIsOpened = false;
+	isOpened = false;
 	isSaved = false;
 	isChanged = false;
-	usersFileName = "";
-	booksFileName = "";
+	FileName = "";
 }
 
-void Library::open()
+void Library::open(const String& filename)
 {
-	if (usersIsOpened && booksIsOpened)
+	if (isOpened)
 	{
-		std::cout << "Databases are already loaded! Save or close before trying to open a new one!\n";
+		std::cout << "Database is already loaded! Save or close before trying to open a new one!\n";
 		return;
 	}
-	if (!usersIsOpened)
+	if (!isOpened)
 	{
-		String UsersFilename;
-		std::cout << "Enter users database directory: ";
-		std::cin >> UsersFilename;
-		size_t usersSize = UsersFilename.getSize();
-		if (UsersFilename[usersSize - 4] != '.' || UsersFilename[usersSize - 3] != 't' || UsersFilename[usersSize - 2] != 'x' || UsersFilename[usersSize - 1] != 't')
+		size_t size = filename.getSize();
+		if (filename[size - 4] != '.' || filename[size - 3] != 't' || filename[size - 2] != 'x' || filename[size - 1] != 't')
 		{
 			std::cout << "File name must end with .txt !\n";
 			return;
 		}
-		if (correctUsersDatabase(UsersFilename))
-		{
-			users.loadUsers(UsersFilename.getText());
-			this->usersFileName = UsersFilename;
-			this->usersIsOpened = true;
-		}
-	}
-	if (!booksIsOpened)
-	{
-		String BooksFilename;
-		std::cout << "Enter books database directory: ";
-		std::cin >> BooksFilename;
-		size_t booksSize = BooksFilename.getSize();
-		if (BooksFilename[booksSize - 4] != '.' || BooksFilename[booksSize - 3] != 't' || BooksFilename[booksSize - 2] != 'x' || BooksFilename[booksSize - 1] != 't')
-		{
-			std::cout << "File name must end with .txt !\n";
-			return;
-		}
-		books.loadBooks(BooksFilename.getText());
-		this->booksFileName = BooksFilename;
-		this->booksIsOpened = true;
+		std::ifstream in(filename.getText());
+		in.seekg(std::ios::beg);
+		users.loadUsers(in);
+		size_t skip = users.getSize() * 4 + 1;
+		in.seekg(std::ios::beg);
+		books.loadBooks(in,skip);
+		std::cout << "Database successfully loaded!\n";
+		this->FileName = filename;
+		this->isOpened = true;
 	}
 }
 
 void Library::save()
 {
-	if (!(usersIsOpened && booksIsOpened))
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -64,15 +47,16 @@ void Library::save()
 		std::cout << "No changes have been made!\n";
 		return;
 	}
-	users.saveUsers(this->usersFileName);
-	books.saveBooks(this->booksFileName);
-	std::cout << "Databases successfully updated!\n";
+	std::ofstream out(this->FileName.getText());
+	users.saveUsers(out);
+	books.saveBooks(out);
+	std::cout << "Database successfully updated!\n";
 	this->isChanged = false;
 }
 
 void Library::logIn()
 {
-	if (!usersIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -132,7 +116,7 @@ void Library::logIn()
 
 void Library::logOut()
 {
-	if (!usersIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -193,7 +177,7 @@ void Library::help() const
 
 void Library::booksAll() const
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -213,7 +197,7 @@ void Library::booksAll() const
 
 void Library::booksInfo(size_t id) const
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -228,7 +212,7 @@ void Library::booksInfo(size_t id) const
 
 void Library::booksFind(String& option, const String& description) const
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -243,7 +227,7 @@ void Library::booksFind(String& option, const String& description) const
 
 void Library::booksSortAscending(const String& option)
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -259,7 +243,7 @@ void Library::booksSortAscending(const String& option)
 
 void Library::booksSortDescending(const String& option)
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -275,7 +259,7 @@ void Library::booksSortDescending(const String& option)
 
 void Library::booksAdd()
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -298,7 +282,7 @@ void Library::booksAdd()
 
 void Library::booksRemove(const String& title )
 {
-	if (!booksIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -321,7 +305,7 @@ void Library::booksRemove(const String& title )
 
 void Library::usersAdd(const String& name, const String& password)
 {
-	if (!usersIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -345,7 +329,7 @@ void Library::usersAdd(const String& name, const String& password)
 
 void Library::usersRemove(String& name)
 {
-	if (!usersIsOpened)
+	if (!isOpened)
 	{
 		std::cout << "Open a file before executing any other commands!\n";
 		return;
@@ -369,23 +353,6 @@ void Library::usersRemove(String& name)
 	}
 	users.removeUser(name);
 	this->isChanged = true;
-}
-
-bool Library::correctUsersDatabase(const String& filename)
-{
-	std::ifstream in(filename.getText());
-	size_t lines = users.getLinesOfFile(filename);
-	if (lines == 0)
-	{
-		std::cout << "Users file can't be empty!\n";
-		return false;
-	}
-	if (lines % 4 != 0)
-	{
-		std::cout << "Incorrect input in users database file!\n";
-		return false;
-	}
-	return true;
 }
 
 

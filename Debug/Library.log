@@ -1,2 +1,5 @@
-﻿  Project.cpp
+﻿  BookStore.cpp
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\BookStore.cpp(395,20): warning C4018: '<': signed/unsigned mismatch
+  Library.cpp
+  Generating Code...
   Library.vcxproj -> D:\VisualStudio2019\ООП-Л\Course Project\Library\Debug\Library.exe
