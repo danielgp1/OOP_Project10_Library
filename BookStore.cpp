@@ -381,6 +381,7 @@ void BookStore::removeBook(const String& title)
 		return;
 	}
 	books.removeAt(indexOfBook);
+	this->total--;
 	std::cout << "Book successfully removed!\n";
 }
 
@@ -404,7 +405,7 @@ void BookStore::loadBooks(std::ifstream& in,size_t skip)
 		book.loadBook(in);
 		books.pushBack(book);
 	}
-	this->id = books.getSize() + 1;
+	this->id = books[books.getSize() - 1].getID() + 1;
 }
 
 void BookStore::saveBooks(std::ofstream& out)

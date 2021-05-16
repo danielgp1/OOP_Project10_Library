@@ -3,7 +3,7 @@ admin
 i<3c++
 1
 1
-2
+1
 MyFirstBook
 iAmTheAuthor
 sci-fi
@@ -16,15 +16,3 @@ stars
 2021
 100
 1
-MySecondBook
-iAmTheAuthor
-adventure
-A cool book about dinosaurs
-4
-dino
-BC
-animals
-adventure
-2021
-100
-2

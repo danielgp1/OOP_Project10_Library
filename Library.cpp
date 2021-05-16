@@ -194,7 +194,7 @@ void Library::help() const
 {
 	std::cout << "Available commands:\n";
 	std::cout << "help                                       opens the help menu\n";
-	std::cout << "open <file name>                           opens <file name>\n";
+	std::cout << "open <location>                            opens <file name>\n";
 	std::cout << "close                                      closes the current file\n";
 	std::cout << "save                                       saves the current file\n";
 	std::cout << "save as <location>                         saves the current file in <location>\n";
