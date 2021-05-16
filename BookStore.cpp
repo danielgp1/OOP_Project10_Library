@@ -23,7 +23,8 @@ void BookStore::allBooksBrieflyInfo() const
 	for (size_t i = 0; i < size; ++i)
 	{
 		books[i].printBriefly();
-		std::cout << std::endl;
+		if(i != size - 1)
+			std::cout << std::endl;
 	}
 }
 
@@ -414,4 +415,10 @@ void BookStore::saveBooks(std::ofstream& out)
 	{
 		books[i].saveBook(out);
 	}
+}
+
+void BookStore::clear()
+{
+	BookStore clean;
+	*this = clean;
 }

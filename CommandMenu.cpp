@@ -60,6 +60,12 @@ void CommandMenu::startLibrary()
 		}
 		case 1:
 		{
+			if (parameters.getSize() >= 1)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.close();
 			break;
 		}
 		case 2:
@@ -74,6 +80,12 @@ void CommandMenu::startLibrary()
 		}
 		case 3:
 		{
+			if (parameters.getSize() >= 2 || parameters.getSize() <= 0)
+			{
+				std::cout << "Invalid parameters count!\n";
+				break;
+			}
+			library.saveAs(parameters[0]);
 			break;
 		}
 		case 4:
@@ -308,4 +320,3 @@ void CommandMenu::checkSecondCommand(String& command)
 	if (command != "info" && command != "find" && command != "sort" && command != "add" && command != "remove" && command != "all" && command != "as")
 		this->theCommand.popBack();
 }
-

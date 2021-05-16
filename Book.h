@@ -13,10 +13,13 @@ public:
 	void setTags(const Vector<String>&);
 	void setRating(const double);
 	void setId(const size_t);
+
 	void printBriefly() const;
 	void printDetailed() const;
+
 	void loadBook(std::istream&);
 	void saveBook(std::ostream&) const;
+
 	size_t getID() const;
 	const String& getTitle() const; 
 	const String& getAuthor() const; 

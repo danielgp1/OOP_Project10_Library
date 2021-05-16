@@ -53,22 +53,22 @@ void Book::setId(const size_t _id)
 
 void Book::printBriefly() const
 {
-	std::cout << "Title: " << this->title << std::endl;
+	std::cout << "Title:  " << this->title << std::endl;
 	std::cout << "Author: " << this->author << std::endl;
-	std::cout << "Genre: " << this->genre << std::endl;
-	std::cout << "ID: " << this->id << std::endl;
+	std::cout << "Genre:  " << this->genre << std::endl;
+	std::cout << "ID:     " << this->id << std::endl;
 }
 
 void Book::printDetailed() const
 {
-	std::cout << "Title: " << this->title << std::endl;
-	std::cout << "Author: " << this->author << std::endl;
-	std::cout << "Genre: " << this->genre << std::endl;
+	std::cout << "Title:   " << this->title << std::endl;
+	std::cout << "Author:  " << this->author << std::endl;
+	std::cout << "Genre:   " << this->genre << std::endl;
 	std::cout << "Summary: " << this->summary << std::endl;
-	std::cout << "Tags: "; this->tags.print(); std::cout << std::endl;
-	std::cout << "Year: " << this->year << std::endl;
-	std::cout << "Rating: " << this->rating << std::endl;
-	std::cout << "ID: " << this->id << std::endl;
+	std::cout << "Tags:    "; this->tags.print(); std::cout << std::endl;
+	std::cout << "Year:    " << this->year << std::endl;
+	std::cout << "Rating:  " << this->rating << std::endl;
+	std::cout << "ID:      " << this->id << std::endl;
 }
 
 void Book::loadBook(std::istream& in)

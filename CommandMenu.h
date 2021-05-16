@@ -19,4 +19,3 @@ private:
 	Vector<String> parameters;
 	String command;
 };
-

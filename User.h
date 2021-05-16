@@ -5,18 +5,22 @@ class User
 public:
 	User();
 	User(String&, String&);
+
 	String getName() const;
-	void setName(const String&);
 	String getPassword() const;
-	void setPassword(const String&);
 	bool getAdmin() const;
 	bool getLoggedIn() const;
+
+	void setPassword(const String&);
+	void setName(const String&);
 	void setLoggedIn(const bool);
 	void setAdmin(const bool);
+
 	void loadUser(std::ifstream&);
 	void saveUser(std::ostream&) const;
+
 	bool operator==(const User&);
-	User& operator=(const User& other);
+	User& operator=(const User&);
 private:
 	String name;
 	String password;

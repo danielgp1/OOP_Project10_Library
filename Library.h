@@ -22,7 +22,7 @@ public:
 	void booksRemove(const String&);
 	void usersAdd(const String&, const String&);
 	void usersRemove(String&);
-
+	void clear();
 	User& activeUser();
 private:
 	UserStore users;
@@ -32,4 +32,3 @@ private:
 	bool isChanged;
 	String FileName;
 };
-

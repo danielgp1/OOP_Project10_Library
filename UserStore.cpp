@@ -70,16 +70,6 @@ size_t UserStore::getSize() const
 	return this->users.getSize();
 }
 
-Vector<String> UserStore::registeredUsers() const
-{
-	size_t size = users.getSize();
-	Vector<String> registeredUsers;
-	for (size_t i = 0; i < size; ++i)
-	{
-		registeredUsers.pushBack(users[i].getName());
-	}
-	return registeredUsers;
-}
 
 User& UserStore::operator[](const size_t index) const
 {
@@ -101,12 +91,11 @@ int UserStore::activeUserIndex() const
 	return index;
 }
 
-const size_t UserStore::getLinesOfFile(const String& filename)
+const size_t UserStore::getLinesOfFile(std::ifstream& in)
 {
-	std::ifstream myfile(filename.getText());
-	myfile.unsetf(std::ios_base::skipws);
+	in.unsetf(std::ios_base::skipws);
 	size_t line_count = std::count(
-		std::istream_iterator<char>(myfile),
+		std::istream_iterator<char>(in),
 		std::istream_iterator<char>(),
 		'\n');
 	return line_count;
@@ -114,9 +103,17 @@ const size_t UserStore::getLinesOfFile(const String& filename)
 
 void UserStore::loadUsers(std::ifstream& in)
 {
-	size_t helper;
-	in >> helper;
-	for (size_t i = 0; i < helper; ++i)
+	in.seekg(0, std::ios::end);
+	int size = in.tellg();
+	if (size == -1)
+	{
+		std::cout << "Database can't be empty!\n";
+		return;
+	}
+	in.seekg(0, std::ios::beg);
+	size_t total;
+	in >> total;
+	for (size_t i = 0; i < total; ++i)
 	{
 		User user;
 		user.loadUser(in);
@@ -134,3 +131,8 @@ void UserStore::saveUsers(std::ofstream& out)
 	}
 }
 
+void UserStore::clear()
+{
+	UserStore clean;
+	*this = clean;
+}

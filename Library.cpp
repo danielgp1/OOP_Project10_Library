@@ -26,8 +26,10 @@ void Library::open(const String& filename)
 		std::ifstream in(filename.getText());
 		in.seekg(std::ios::beg);
 		users.loadUsers(in);
+		if (users.getSize() == 0)
+			return;
 		size_t skip = users.getSize() * 4 + 1;
-		in.seekg(std::ios::beg);
+		in.seekg(0,std::ios::beg);
 		books.loadBooks(in,skip);
 		std::cout << "Database successfully loaded!\n";
 		this->FileName = filename;
@@ -52,6 +54,53 @@ void Library::save()
 	books.saveBooks(out);
 	std::cout << "Database successfully updated!\n";
 	this->isChanged = false;
+}
+
+void Library::saveAs(const String& filename)
+{
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
+	size_t size = filename.getSize();
+	if (filename[size - 4] != '.' || filename[size - 3] != 't' || filename[size - 2] != 'x' || filename[size - 1] != 't')
+	{
+		std::cout << "File name must end with .txt !\n";
+		return;
+	}
+	this->FileName = filename;
+	this->save();
+}
+
+void Library::close()
+{
+	if (!isOpened)
+	{
+		std::cout << "Open a file before executing any other commands!\n";
+		return;
+	}
+	if (isChanged)
+	{
+		std::cout << "There are unsaved changes! Are you sure you want to exit?\n0 - Save&Close | 1 - Close : ";
+		bool choice = 0;
+		std::cin >> choice;
+		if (choice)
+		{
+			std::cin.ignore();
+			std::cout << "Successfully closed " << this->FileName << "!\n";
+			this->clear();
+			return;
+		}
+		std::cin.ignore();
+		this->save();
+		std::cout << "Successfully closed " << this->FileName << "!\n";
+		this->clear();
+		return;
+	}
+	std::cout << "Successfully closed " << this->FileName << "!\n";
+	this->clear();
+	this->isOpened = 0;
 }
 
 void Library::logIn()
@@ -133,24 +182,12 @@ void Library::logOut()
 
 void Library::exit()
 {
-	if (isChanged)
+	if (users.activeUserIndex() == -1)
 	{
-		std::cout << "There are unsaved changes! Are you sure you want to exit?\n0 - Save&Exit | 1 - Exit : ";
-		bool choice = 0;
-		std::cin >> choice;
-		if (choice)
-		{
-			std::cin.ignore();
-			std::cout << "Good bye!\n";
-			return;
-		}
-		std::cin.ignore();
-		this->save();
 		std::cout << "Good bye!\n";
 		return;
-	}
-	std::cout << "Good bye!\n";
-	return;
+	}			
+	std::cout << "Good bye " << users[users.activeUserIndex()].getName() << "!\n";
 }
 
 void Library::help() const
@@ -359,4 +396,12 @@ void Library::usersRemove(String& name)
 User& Library::activeUser()
 {
 	return users[users.activeUserIndex()];
+}
+
+void Library::clear()
+{
+	this->users.clear();
+	this->books.clear();
+	this->isOpened = false;
+	this->FileName = "";
 }

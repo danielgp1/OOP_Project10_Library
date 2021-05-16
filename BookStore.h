@@ -13,9 +13,10 @@ public:
 	void sortBooksDescending(const String&);
 	void addBook();
 	void removeBook(const String&);
+	void loadBooks(std::ifstream&,size_t);
+	void saveBooks(std::ofstream&);
 	size_t getSize() const;
-	void loadBooks(std::ifstream& in,size_t);
-	void saveBooks(std::ofstream& out);
+	void clear();
 private:
 	Vector<Book> books;
 	size_t total;
