@@ -282,6 +282,7 @@ void BookStore::sortBooksDescending(const String& option)
 
 void BookStore::addBook()
 {
+	std::cout << "Please use \"_\" instead of blank space!\n";
 	String title;
 	std::cout << "Title: ";
 	std::cin >> title;

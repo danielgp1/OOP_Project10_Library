@@ -24,6 +24,7 @@ public:
 	void usersRemove(String&);
 	void clear();
 	User& activeUser();
+
 private:
 	UserStore users;
 	BookStore books;

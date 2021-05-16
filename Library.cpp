@@ -17,7 +17,25 @@ void Library::open(const String& filename)
 	}
 	if (!isOpened)
 	{
+		
 		size_t size = filename.getSize();
+		if ((filename[0] != 'C' && filename[0] != 'D') || filename[1] != ':' || filename[2] != '\\')
+		{
+			std::cout << "Please use the format DISK:\\\\PATH\\\\PATH\\\\...\\\\filename.txt\n";
+			return;
+		}
+		for (size_t i = 0; i < size; ++i)
+		{
+			if (filename[i] == '\\')
+			{
+				if (filename[i + 1] != '\\')
+				{
+					std::cout << "Incorrect file name input!\n";
+					return;
+				}
+				++i;
+			}
+		}
 		if (filename[size - 4] != '.' || filename[size - 3] != 't' || filename[size - 2] != 'x' || filename[size - 1] != 't')
 		{
 			std::cout << "File name must end with .txt !\n";
@@ -64,6 +82,23 @@ void Library::saveAs(const String& filename)
 		return;
 	}
 	size_t size = filename.getSize();
+	if ((filename[0] != 'C' && filename[0] != 'D') || filename[1] != ':' || filename[2] != '\\')
+	{
+		std::cout << "Please use the format DISK:\\\\PATH\\\\PATH\\\\...\\\\filename.txt\n";
+		return;
+	}
+	for (size_t i = 0; i < size; ++i)
+	{
+		if (filename[i] == '\\')
+		{
+			if (filename[i + 1] != '\\')
+			{
+				std::cout << "Incorrect file name input!\n";
+				return;
+			}
+			++i;
+		}
+	}
 	if (filename[size - 4] != '.' || filename[size - 3] != 't' || filename[size - 2] != 'x' || filename[size - 1] != 't')
 	{
 		std::cout << "File name must end with .txt !\n";

@@ -231,6 +231,10 @@ void CommandMenu::getCommand()
 	int helperIndex = 0;
 	for (size_t i = 0; i < size; ++i)
 	{
+		if ((command[i] == ' ' && ourCommand == "") || (command[i] == 9 && ourCommand == ""))
+		{
+			continue;
+		}
 		if (command[i] == ' ')
 		{
 			helperIndex = i + 1;
@@ -242,6 +246,10 @@ void CommandMenu::getCommand()
 	theCommand.pushBack(ourCommand);
 	for (size_t j = helperIndex; j < size; ++j)
 	{
+		if ((command[j] == ' ' && helperCommand == "") || (command[j] == 9 && helperCommand == ""))
+		{
+			continue;
+		}
 		if (command[j] == ' ')
 		{
 			theCommand.pushBack(helperCommand);
@@ -294,6 +302,10 @@ void CommandMenu::getParameters()
 	String parameter = "";
 	for (size_t i = 0; i < size; ++i)
 	{
+		if ((command[i] == ' ' && parameter == "") || (command[i] == 9 && parameter == ""))
+		{
+			continue;
+		}
 		if (command[i] == ' ' && command[i - 1] == ' ')
 		{
 			continue;
