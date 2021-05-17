@@ -5,7 +5,6 @@ class BookStore
 {
 public:
 	BookStore();
-	void print() const;
 	void allBooksBrieflyInfo() const;
 	void bookDetailedInfo(const size_t) const;
 	void findBook(const String&,const String&) const;
@@ -17,6 +16,7 @@ public:
 	void saveBooks(std::ofstream&);
 	size_t getSize() const;
 	void clear();
+	void swap(Book&, Book&);
 private:
 	Vector<Book> books;
 	size_t total;

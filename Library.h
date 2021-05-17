@@ -13,17 +13,17 @@ public:
 	void logOut();
 	void exit();
 	void help() const;
-	void booksAll()const;
-	void booksInfo(size_t) const;
-	void booksFind(String&,const String&) const;
+	void booksAll() const;
+	void booksInfo(const size_t) const;
+	void booksFind(const String&,const String&) const;
 	void booksSortAscending(const String&);
 	void booksSortDescending(const String&);
 	void booksAdd();
 	void booksRemove(const String&);
 	void usersAdd(const String&, const String&);
-	void usersRemove(String&);
+	void usersRemove(const String&);
 	void clear();
-	User& activeUser();
+	const User& activeUser();
 
 private:
 	UserStore users;

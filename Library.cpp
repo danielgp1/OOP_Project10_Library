@@ -244,7 +244,7 @@ void Library::booksAll() const
 	books.allBooksBrieflyInfo();
 }
 
-void Library::booksInfo(size_t id) const
+void Library::booksInfo(const size_t id) const
 {
 	if (!isOpened)
 	{
@@ -259,7 +259,7 @@ void Library::booksInfo(size_t id) const
 	books.bookDetailedInfo(id);
 }
 
-void Library::booksFind(String& option, const String& description) const
+void Library::booksFind(const String& option, const String& description) const
 {
 	if (!isOpened)
 	{
@@ -376,7 +376,7 @@ void Library::usersAdd(const String& name, const String& password)
 	this->isChanged = true;
 }
 
-void Library::usersRemove(String& name)
+void Library::usersRemove(const String& name)
 {
 	if (!isOpened)
 	{
@@ -405,7 +405,7 @@ void Library::usersRemove(String& name)
 }
 
 
-User& Library::activeUser()
+const User& Library::activeUser()
 {
 	return users[users.activeUserIndex()];
 }

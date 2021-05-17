@@ -8,15 +8,6 @@ BookStore::BookStore()
 	this->total = 0;
 }
 
-void BookStore::print() const
-{
-	size_t size = books.getSize();
-	for (size_t i = 0; i < size; ++i)
-	{
-		std::cout << books[i].getAuthor() << " | ";
-	}
-}
-
 void BookStore::allBooksBrieflyInfo() const
 {
 	size_t size = books.getSize();
@@ -131,10 +122,7 @@ void BookStore::sortBooksAscending(const String& option)
 			{
 				if ( !(books[i].getTitle() < books[j].getTitle()))
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -147,10 +135,7 @@ void BookStore::sortBooksAscending(const String& option)
 			{
 				if (!(books[i].getAuthor() < books[j].getAuthor()))
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -163,10 +148,7 @@ void BookStore::sortBooksAscending(const String& option)
 			{
 				if ( !(books[i].getYear() < books[j].getYear()))
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -179,10 +161,7 @@ void BookStore::sortBooksAscending(const String& option)
 			{
 				if (!(books[i].getRating() < books[j].getRating()))
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -216,10 +195,7 @@ void BookStore::sortBooksDescending(const String& option)
 			{
 				if (books[i].getTitle() < books[j].getTitle())
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -232,10 +208,7 @@ void BookStore::sortBooksDescending(const String& option)
 			{
 				if (books[i].getAuthor() < books[j].getAuthor())
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -248,10 +221,7 @@ void BookStore::sortBooksDescending(const String& option)
 			{
 				if (books[i].getYear() < books[j].getYear())
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -264,10 +234,7 @@ void BookStore::sortBooksDescending(const String& option)
 			{
 				if (books[i].getRating() < books[j].getRating())
 				{
-					Book temp;
-					temp = books[i];
-					books[i] = books[j];
-					books[j] = temp;
+					swap(books[i], books[j]);
 				}
 			}
 		}
@@ -282,11 +249,25 @@ void BookStore::sortBooksDescending(const String& option)
 
 void BookStore::addBook()
 {
+	size_t size = 0;
 	std::cout << "Please use \"_\" instead of blank space!\n";
-	String title;
-	std::cout << "Title: ";
-	std::cin >> title;
-	size_t size = books.getSize();
+	String title = "";
+	do
+	{
+		std::cout << "Title: ";
+		std::cin >> title;
+		size = title.getSize();
+		for (size_t i = 0; i < size; ++i)
+		{
+			if (title[i] == ' ')
+			{
+				std::cout << "Please use \"_\" instead of blank space!\n";
+				title = "";
+				break;
+			}
+		}
+	} while (title == "");
+	size = books.getSize();
 	for (size_t i = 0; i < size; ++i)
 	{
 		if (books[i].getTitle() == title)
@@ -295,10 +276,23 @@ void BookStore::addBook()
 			return;
 		}
 	}
-	String author;
-	std::cout << "Author: ";
-	std::cin >> author;
-
+	String author = "";
+	do
+	{
+		std::cout << "Author: ";
+		std::cin >> author;
+		size = author.getSize();
+		for (size_t i = 0; i < size; ++i)
+		{
+			if (author[i] == ' ')
+			{
+				std::cout << "Please use \"_\" instead of blank space!\n";
+				author = "";
+				break;
+			}
+		}
+	} while (author == "");
+	
 	String genre;
 	std::cout << "Genre: ";
 	std::cin >> genre;
@@ -423,4 +417,12 @@ void BookStore::clear()
 {
 	BookStore clean;
 	*this = clean;
+}
+
+void BookStore::swap(Book& a, Book& b)
+{
+	Book temp;
+	temp = a;
+	a = b;
+	b = temp;
 }

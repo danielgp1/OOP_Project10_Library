@@ -9,10 +9,10 @@ public:
 	~Vector();
 	Vector(const Vector<T>&);
 	Vector<T>& operator=(const Vector<T>&);
-	T& operator[](size_t) const;
+	T& operator[](const size_t) const;
 	void insertAt(const T&,size_t);
-	void removeAt(size_t);
-	void pushBack(T);
+	void removeAt(const size_t);
+	void pushBack(const T&);
 	void print() const;
 	void clear();
 	void popBack();
@@ -42,7 +42,7 @@ public:
 		}
 		return in;
 	}
-	size_t getSize() const;
+	const size_t getSize() const;
 private:
 	size_t size;
 	size_t capacity;
@@ -85,7 +85,7 @@ inline Vector<T>& Vector<T>::operator=(const Vector<T>& otherVector)
 }
 
 template<typename T>
-inline T& Vector<T>::operator[](size_t index) const
+inline T& Vector<T>::operator[](const size_t index) const
 {
 	return this->vector[index];
 }
@@ -106,7 +106,7 @@ inline void Vector<T>::insertAt(const T& element, size_t index)
 }
 
 template<typename T>
-inline void Vector<T>::removeAt(size_t index)
+inline void Vector<T>::removeAt(const size_t index)
 {
 	if (index >= size || index < 0)
 	{
@@ -121,7 +121,7 @@ inline void Vector<T>::removeAt(size_t index)
 }
 
 template<typename T>
-inline void Vector<T>::pushBack(T newElement)
+inline void Vector<T>::pushBack(const T& newElement)
 {
 	if (size >= capacity)
 	{
@@ -174,7 +174,7 @@ inline void Vector<T>::popBack()
 	
 
 template<typename T>
-inline size_t Vector<T>::getSize() const
+inline const size_t Vector<T>::getSize() const
 {
 	return this->size;
 }

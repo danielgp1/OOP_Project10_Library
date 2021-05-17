@@ -262,7 +262,7 @@ void CommandMenu::getCommand()
 	checkCommand(ourCommand, helperCommand, theCommand);
 }
 
-void CommandMenu::checkCommand(String& command1,String& command2,Vector<String>& vector1)
+void CommandMenu::checkCommand(const String& command1,const String& command2,const Vector<String>& vector1)
 {
 	if (command1 == "save")
 	{
@@ -327,7 +327,7 @@ void CommandMenu::getParameters()
 		parameters.pushBack(parameter);
 }
 
-void CommandMenu::checkSecondCommand(String& command)
+void CommandMenu::checkSecondCommand(const String& command)
 {
 	if (command != "info" && command != "find" && command != "sort" && command != "add" && command != "remove" && command != "all" && command != "as")
 		this->theCommand.popBack();

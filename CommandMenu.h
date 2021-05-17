@@ -10,8 +10,8 @@ public:
 	CommandMenu();
 	void startLibrary();
 	void getCommand();
-	void checkSecondCommand(String&);
-	void checkCommand(String&, String&, Vector<String>&);
+	void checkSecondCommand(const String&);
+	void checkCommand(const String&,const String&,const Vector<String>&);
 	void getParameters();
 private:
 	Vector<String> allCommands;
