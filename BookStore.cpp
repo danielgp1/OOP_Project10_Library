@@ -101,7 +101,7 @@ void BookStore::findBook(const String& option, const String& description) const
 	}
 }
 
-void BookStore::sortBooksAscending(const String& option)
+void BookStore::sortBooksAscending(const String& input)
 {
 	size_t size = books.getSize();
 	if (size == 0)
@@ -114,67 +114,52 @@ void BookStore::sortBooksAscending(const String& option)
 		std::cout << "There is only one book!\n";
 		return;
 	}
-	if (option == "title")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if ( !(books[i].getTitle() < books[j].getTitle()))
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
-	else if (option == "author")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if (!(books[i].getAuthor() < books[j].getAuthor()))
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
-	else if (option == "year")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if ( !(books[i].getYear() < books[j].getYear()))
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
-	else if (option == "rating")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if (!(books[i].getRating() < books[j].getRating()))
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
+	option ourOption;
+	if (input == "title")
+		ourOption = option::TITLE;
+	else if (input == "author")
+		ourOption = option::AUTHOR;
+	else if (input == "year")
+		ourOption = option::YEAR;
+	else if (input == "rating")
+		ourOption = option::RATING;
 	else
 	{
 		std::cout << "Invalid option!\n";
 		return;
 	}
-	std::cout << "Books sorted by " << option << " successfully!\n";
+	auto myLambda = [ourOption](const Book& b1, const Book& b2) -> bool
+	{
+		switch (ourOption)
+		{
+		case option::TITLE:
+			return b1.getTitle() < b2.getTitle();
+			break;
+		case option::AUTHOR:
+			return b1.getAuthor() < b2.getAuthor();
+			break;
+		case option::YEAR:
+			return b1.getYear() < b2.getYear();
+			break;
+		case option::RATING:
+			return b1.getRating() < b1.getRating();
+			break;
+		default:
+			break;
+		}
+	};
+	for (size_t i = 0; i < size; ++i)
+	{
+		for (size_t j = i + 1; j < size; ++j)
+		{
+			if (!myLambda(books[i], books[j]))
+				swap(books[i], books[j]);
+		}
+	}
+	std::cout << "Books sorted by " << input << " successfully!\n";
 }
 
-void BookStore::sortBooksDescending(const String& option)
+void BookStore::sortBooksDescending(const String& input)
 {
 	size_t size = books.getSize();
 	if (size == 0)
@@ -187,64 +172,49 @@ void BookStore::sortBooksDescending(const String& option)
 		std::cout << "There is only one book!\n";
 		return;
 	}
-	if (option == "title")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if (books[i].getTitle() < books[j].getTitle())
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
-	else if (option == "author")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if (books[i].getAuthor() < books[j].getAuthor())
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
-	else if (option == "year")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if (books[i].getYear() < books[j].getYear())
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
-	else if (option == "rating")
-	{
-		for (size_t i = 0; i < size; ++i)
-		{
-			for (size_t j = i + 1; j < size; j++)
-			{
-				if (books[i].getRating() < books[j].getRating())
-				{
-					swap(books[i], books[j]);
-				}
-			}
-		}
-	}
+	option ourOption;
+	if (input == "title")
+		ourOption = option::TITLE;
+	else if (input == "author")
+		ourOption = option::AUTHOR;
+	else if (input == "year")
+		ourOption = option::YEAR;
+	else if (input == "rating")
+		ourOption = option::RATING;
 	else
 	{
 		std::cout << "Invalid option!\n";
 		return;
 	}
-	std::cout << "Books sorted by " << option << " successfully!\n";	
+	auto myLambda = [ourOption](const Book& b1, const Book& b2) -> bool
+	{
+		switch (ourOption)
+		{
+		case option::TITLE:
+			return b1.getTitle() < b2.getTitle();
+			break;
+		case option::AUTHOR:
+			return b1.getAuthor() < b2.getAuthor();
+			break;
+		case option::YEAR:
+			return b1.getYear() < b2.getYear();
+			break;
+		case option::RATING:
+			return b1.getRating() < b1.getRating();
+			break;
+		default:
+			break;
+		}
+	};
+	for (size_t i = 0; i < size; ++i)
+	{
+		for (size_t j = i + 1; j < size; ++j)
+		{
+			if (myLambda(books[i], books[j]))
+				swap(books[i], books[j]);
+		}
+	}
+	std::cout << "Books sorted by " << input << " successfully!\n";
 }
 
 void BookStore::addBook()

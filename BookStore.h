@@ -4,6 +4,7 @@
 class BookStore
 {
 public:
+	enum class option { TITLE, AUTHOR, YEAR, RATING };
 	BookStore();
 	void allBooksBrieflyInfo() const;
 	void bookDetailedInfo(const size_t) const;
