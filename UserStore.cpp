@@ -55,15 +55,6 @@ void UserStore::removeUser(const String& username)
 	std::cout << "User successfully removed!\n";
 }
 
-void UserStore::print() const
-{
-	size_t size = users.getSize();
-	std::cout << "Registered users:\n";
-	for (size_t i = 0; i < size; ++i)
-	{
-		std::cout << users[i].getName() << " | ";
-	}
-}
 
 size_t UserStore::getSize() const
 {
@@ -91,7 +82,7 @@ int UserStore::activeUserIndex() const
 	return index;
 }
 
-const size_t UserStore::getLinesOfFile(std::ifstream& in)
+const size_t UserStore::getLinesOfFile(std::ifstream& in) const
 {
 	in.unsetf(std::ios_base::skipws);
 	size_t line_count = std::count(

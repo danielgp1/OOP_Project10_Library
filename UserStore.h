@@ -6,16 +6,19 @@ class UserStore
 {
 public:
 	UserStore();
+
+	const size_t getLinesOfFile(std::ifstream&) const;
+	size_t getSize() const;
+
 	void addUser(const String&,const String&);
 	void removeUser(const String&);
-	void print() const;
-	size_t getSize() const;
-	const size_t getLinesOfFile(std::ifstream&);
+	void clear();
+	
 	User& operator[](const size_t) const;
 	int activeUserIndex() const;
+
 	void loadUsers(std::ifstream& in);
 	void saveUsers(std::ofstream& out);
-	void clear();
 private:
 	Vector<User> users;
 	size_t total;

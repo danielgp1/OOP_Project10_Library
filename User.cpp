@@ -80,15 +80,3 @@ bool User::operator==(const User& user)
 		return true;
 	return false;
 }
-
-User& User::operator=(const User& other)
-{
-	if (this != &other)
-	{
-		this->name = other.name;
-		this->password = other.password;
-		this->isAdmin = other.isAdmin;
-		this->isLoggedIn = other.isLoggedIn;
-	}
-	return *this;
-}

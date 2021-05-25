@@ -20,7 +20,6 @@ public:
 	void saveUser(std::ostream&) const;
 
 	bool operator==(const User&);
-	User& operator=(const User&);
 private:
 	String name;
 	String password;

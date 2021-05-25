@@ -1,7 +1,7 @@
-﻿  BookStore.cpp
-D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\BookStore.cpp(362,20): warning C4018: '<': signed/unsigned mismatch
+﻿  CommandMenu.cpp
+  Library.cpp
   Project.cpp
+  UserStore.cpp
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\UserStore.cpp(98,11): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
   Generating Code...
-D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\BookStore.cpp(208): warning C4715: '<lambda_4185046b1b668d23767fb98339934f9e>::operator()': not all control paths return a value
-D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\BookStore.cpp(150): warning C4715: '<lambda_e8b2c7ed7bdcf399b80d249847da865f>::operator()': not all control paths return a value
   Library.vcxproj -> D:\VisualStudio2019\ООП-Л\Course Project\Library\Debug\Library.exe
