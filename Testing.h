@@ -2,7 +2,7 @@
 #include <iostream>
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
-#include "Library.h"
+#include "CommandMenu.h"
 
 TEST_CASE("User functionality") {
     User user1;
@@ -20,7 +20,6 @@ TEST_CASE("User functionality") {
     user2.setAdmin(1);
     CHECK(user2.getAdmin() == 1);
 }
-
 
 TEST_CASE("Book functionality")
 {
@@ -99,4 +98,3 @@ TEST_CASE("CommandMenu functionality")
 void runtests() {
     doctest::Context().run();
 }
-
