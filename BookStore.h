@@ -22,6 +22,8 @@ public:
 
 	void loadBooks(std::ifstream&,size_t);
 	void saveBooks(std::ofstream&);
+
+	Book& operator[](const size_t) const; // just for testing
 private:
 	Vector<Book> books;
 	size_t total;

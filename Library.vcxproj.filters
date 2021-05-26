@@ -65,7 +65,10 @@
     <ClInclude Include="Library.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Doctest.h">
+    <ClInclude Include="doctest.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Testing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

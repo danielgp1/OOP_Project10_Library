@@ -1,7 +1,132 @@
-﻿  CommandMenu.cpp
-  Library.cpp
-  Project.cpp
-  UserStore.cpp
-D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\UserStore.cpp(98,11): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-  Generating Code...
+﻿  Project.cpp
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(4708,9): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(4708,9): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(4708,9): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(4721,9): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(4721,9): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(4721,9): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(7,1): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(7,1): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(7,1): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(9,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(9,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(9,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(11,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(11,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(11,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(12,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(12,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(12,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(15,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(15,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(15,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(16,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(16,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(16,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(19,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(19,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(19,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(21,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(21,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(21,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(25,1): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(25,1): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(25,1): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(28,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(28,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(28,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(33,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(33,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(33,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(35,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(35,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(35,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(39,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(39,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(39,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(42,1): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(42,1): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(42,1): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(46,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(46,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(46,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(48,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(48,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(48,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(50,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(50,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(50,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(52,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(52,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(52,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(53,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(53,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(53,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(55,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(55,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(55,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(59,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(59,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(59,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(60,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(60,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(60,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(61,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(61,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(61,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(64,1): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(64,1): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(64,1): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(69,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(69,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(69,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(71,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(71,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(71,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(73,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(73,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(73,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(75,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(75,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(75,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(77,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(77,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(77,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(79,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(79,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(79,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(82,1): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(82,1): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(82,1): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(89,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(89,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(89,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(90,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(90,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(90,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(95,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(95,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(95,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(96,5): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(96,5): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(96,5): warning C4566: character represented by universal-character-name '\u041B' cannot be represented in the current code page (1252)
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\doctest.h(1238,9): warning C4805: '==': unsafe mix of type 'T' and type 'T' in operation
+          with
+          [
+              T=bool
+          ]
+          and
+          [
+              T=int
+          ]
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(12): message : see reference to function template instantiation 'doctest::detail::Result doctest::detail::Expression_lhs<bool>::operator ==<int>(R &&)' being compiled
+          with
+          [
+              R=int
+          ]
+D:\VisualStudio2019\ООП-Л\Course Project\Library\Library\Testing.h(12): message : see reference to function template instantiation 'doctest::detail::Result doctest::detail::Expression_lhs<bool>::operator ==<int>(R &&)' being compiled
+          with
+          [
+              R=int
+          ]
   Library.vcxproj -> D:\VisualStudio2019\ООП-Л\Course Project\Library\Debug\Library.exe

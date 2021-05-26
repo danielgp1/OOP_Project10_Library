@@ -1,0 +1,9 @@
+Book
+Author
+Genre
+Summary
+1
+Tag
+2020
+100
+1

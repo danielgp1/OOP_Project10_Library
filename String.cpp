@@ -54,6 +54,8 @@ bool String::operator==(const String& _string) const
 
 bool String::operator==(const char* text) const
 {
+	/*if (this->getSize() != strlen(text))
+		return false;*/
 	for (size_t i = 0; i < size; ++i)
 	{
 		if (text[i] != this->text[i])

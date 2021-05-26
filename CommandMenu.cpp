@@ -1,5 +1,4 @@
 #include "CommandMenu.h"
-#include  "Library.h"
 #include <iostream>
 #include <cstring>
 
@@ -325,6 +324,21 @@ void CommandMenu::getParameters()
 	}
 	if(parameter != "" && parameter != theCommand[0] && parameter != theCommand[1] && parameter != theCommand[2])
 		parameters.pushBack(parameter);
+}
+
+void CommandMenu::setCommand(const String& _command)
+{
+	this->command = _command;
+}
+
+Vector<String>& CommandMenu::getTheCommand() 
+{
+	return this->theCommand;
+}
+
+Vector<String>& CommandMenu::getTheParameters()
+{
+	return this->parameters;
 }
 
 void CommandMenu::checkSecondCommand(const String& command)

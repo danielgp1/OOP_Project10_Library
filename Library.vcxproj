@@ -152,9 +152,10 @@
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookStore.h" />
     <ClInclude Include="CommandMenu.h" />
-    <ClInclude Include="Doctest.h" />
+    <ClInclude Include="doctest.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="String.h" />
+    <ClInclude Include="Testing.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserStore.h" />
     <ClInclude Include="Vector.h" />

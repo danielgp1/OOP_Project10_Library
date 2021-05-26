@@ -383,6 +383,11 @@ void BookStore::saveBooks(std::ofstream& out)
 	}
 }
 
+Book& BookStore::operator[](const size_t index) const
+{
+	return this->books[index];
+}
+
 void BookStore::clear()
 {
 	BookStore clean;
