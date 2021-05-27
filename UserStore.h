@@ -15,7 +15,7 @@ public:
 	void clear();
 	
 	User& operator[](const size_t) const;
-	int activeUserIndex() const;
+	const int activeUserIndex() const;
 
 	void loadUsers(std::ifstream& in);
 	void saveUsers(std::ofstream& out);

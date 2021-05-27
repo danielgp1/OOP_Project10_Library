@@ -6,10 +6,10 @@ public:
 	User();
 	User(String&, String&);
 
-	String getName() const;
-	String getPassword() const;
-	bool getAdmin() const;
-	bool getLoggedIn() const;
+	const String& getName() const;
+	const String& getPassword() const;
+	const bool getAdmin() const;
+	const bool getLoggedIn() const;
 
 	void setPassword(const String&);
 	void setName(const String&);

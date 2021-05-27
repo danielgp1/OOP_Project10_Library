@@ -351,7 +351,7 @@ void BookStore::removeBook(const String& title)
 }
 
 
-size_t BookStore::getSize() const
+const size_t BookStore::getSize() const
 {
 	return this->books.getSize();
 }

@@ -97,7 +97,7 @@ void Book::saveBook(std::ostream& out) const
 	out << id << "\n";
 }
 
-size_t Book::getID() const
+ const size_t Book::getID() const
 {
 	return this->id;
 }
@@ -117,12 +117,12 @@ const Vector<String>& Book::getTags() const
 	return this->tags;
 }
 
-const size_t& Book::getYear() const
+const size_t Book::getYear() const
 {
 	return this->year;
 }
 
-const double& Book::getRating() const
+const double Book::getRating() const
 {
 	return this->rating;
 }

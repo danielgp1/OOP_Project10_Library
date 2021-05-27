@@ -7,7 +7,7 @@ public:
 	enum class option { TITLE, AUTHOR, YEAR, RATING };
 	BookStore();
 
-	size_t getSize() const;
+	const size_t getSize() const;
 
 	void swap(Book&, Book&);
 	void allBooksBrieflyInfo() const;

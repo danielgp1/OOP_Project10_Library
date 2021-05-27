@@ -67,7 +67,7 @@ User& UserStore::operator[](const size_t index) const
 	return this->users[index];
 }
 
-int UserStore::activeUserIndex() const
+const int UserStore::activeUserIndex() const
 {
 	size_t size = users.getSize();
 	int index = -1;

@@ -20,12 +20,12 @@ public:
 	void loadBook(std::istream&);
 	void saveBook(std::ostream&) const;
 
-	size_t getID() const;
+	const size_t getID() const;
 	const String& getTitle() const; 
 	const String& getAuthor() const; 
 	const Vector<String>& getTags() const;
-	const size_t& getYear() const;
-	const double& getRating() const;
+	const size_t getYear() const;
+	const double getRating() const;
 private:
 	String title;
 	String author;
